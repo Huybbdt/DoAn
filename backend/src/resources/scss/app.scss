@@ -1,0 +1,44 @@
+@import 'variable';
+
+.navbar {
+  padding: unset;
+  background-color: $bg-main-color;
+}
+#navbarCollapse {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.bg-main {
+  background-color: $bg-main-color;
+}
+.nav-link:last-child{
+  border-right: none;
+}
+.carousel {
+  margin-top: 48px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+  padding: 12px;
+  border-right: 1px solid #fff;
+}
+.nav-link:hover {
+  background-image: linear-gradient(#4389f6, #0000cc);
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding: .5rem 1rem;
+  }
+  
+  .navbar-dark .navbar-nav .nav-link {
+    padding: 12px;
+    border-bottom: 1px solid #fff;
+    border-right: unset;
+  }
+}

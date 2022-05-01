@@ -1,0 +1,20 @@
+.navbar {
+  padding: unset;
+  background-color: #002878;
+}
+
+.nav-link:last-child {
+  border-right: none;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+  padding: 12px;
+  border-right: 1px solid #fff;
+}
+
+.nav-link:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4389f6), to(#0000cc));
+  background-image: linear-gradient(#4389f6, #0000cc);
+}
+/*# sourceMappingURL=app.css.map */
