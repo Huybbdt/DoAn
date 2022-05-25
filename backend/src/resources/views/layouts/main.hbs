@@ -2,36 +2,77 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <link rel="stylesheet" href="/css/app.css">
-   <title>Ký túc xá đại học sư phạm kỹ thuật - đại học đà nẵng</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />  
+  <link rel="stylesheet" href="/css/app.css">
+  <title>Ký túc xá đại học sư phạm kỹ thuật - đại học đà nẵng</title>
 </head>
 
 <body cz-shortcut-listen="true">
-   {{>header}}
-  <div class="" style="min-height: 600px">
-         {{{body}}}
+  {{>header}}
+  <div class="container" style="min-height: 600px">
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main">
+          <div class="blog-post">
+            {{{body}}}
+          </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">Hướng Dẫn</h4>
+            <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
+              amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+          <div class="p-3">
+            <h4 class="font-italic">Liên Kết</h4>
+            <ol class="list-unstyled mb-0 bg-light rounded">
+              <li><a href="https://www.udn.vn/"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/daihocdanang280520073543.png"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="https://ute.udn.vn/default.aspx"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/header-ute280520073315.png"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="http://feee.ute.udn.vn/"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/KhoaKTXD280520074003.jpg"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="http://khoaktxd.ute.udn.vn/"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/banner-KDienMobile280520072135.png"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="http://chemical.ute.udn.vn/VI/default.aspx"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/Khoa-CNHH280520074203.jpg"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="http://khoacokhi.ute.udn.vn/default.html"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/banner-KhoaCoKhi280520072356.png"
+                    style="width: 100%;" alt=""></a></li>
+              <li><a href="http://doanthanhnien.ute.udn.vn/default.aspx"><img
+                    src="http://sotaysinhvien.ute.udn.vn/Upload/AnhDaiDien/doan-truong-banner280520072916.png"
+                    style="width: 100%;" alt=""></a></li>
+
+            </ol>
+          </div>
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+    </main>
 
   </div>
-   {{>footer}}
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-   <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-   <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-      crossorigin="anonymous"></script>
+  {{>footer}}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

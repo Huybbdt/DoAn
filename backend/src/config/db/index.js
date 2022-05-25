@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-async function connect() {
+async function connectDB() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/test', {
+    await mongoose.connect('mongodb://localhost:27017/qlktx',{
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -11,4 +11,4 @@ async function connect() {
   }
 }
 
-module.exports = { connect };
+module.exports = connectDB();
