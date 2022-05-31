@@ -3,11 +3,9 @@ const jwt = require('jsonwebtoken');
 // const bcrypt = require('bcrypt');
 require('dotenv').config();
 class loginController {
-  async index(req, res, next) {
-    res.render('login');
-  }
   async postLogin(req, res) {
     const { username, password } = req.body;
+    console.log(req.body);
     if (!username || !password) {
       return res.status(400).json({ message: 'fail to login' });
     }
@@ -30,7 +28,7 @@ class loginController {
           expiresIn: 20,
         }
       );
-
+     
       res.send({
         status: 200,
         message: 'Success',
