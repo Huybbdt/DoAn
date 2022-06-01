@@ -1,0 +1,24 @@
+<div class='mt-4'>
+  <form class="form-signin" method="post"  [formGroup]="loginForm"  (ngSubmit)="onSubmitForm()">
+      <div class="text-center mb-4">
+        <h1 class="h2 mb-3 font-weight-normal">Đăng nhập hệ thống</h1>
+        <p>Chú ý: Ban quản lý ký túc xá bạn mới có quyền đăng nhập</p>
+      </div>
+      <div class="form-label-group">
+        <label for="inputEmail">Tài khoản</label>
+        <input  formControlName="username"type="text" id="inputEmail" class="form-control" placeholder="Tài khoản" name="username">
+      </div>
+      <div class="form-label-group mb-4">
+        <label for="inputPassword">Mật Khẩu</label>
+        <input type="password"   formControlName="password" id="inputPassword" class="form-control" placeholder="Password"  name="password"  autocomplete="on">
+      </div>
+        <label  for="inputPassword"></label>
+      <div class="row mb-4">
+    <div class="col">
+      <!-- Simple link -->
+      <a href="/forgot-password">Quên mật khẩu </a>
+    </div>
+  </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng Nhập</button>
+    </form>
+</div>
