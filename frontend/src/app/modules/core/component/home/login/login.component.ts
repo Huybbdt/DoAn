@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
   data: any;
   loginForm: FormGroup;
   constructor(private cookieService: CookieService,private serviceHttp: ServiceHttpService,
-    private formBuilder: FormBuilder,private router: Router,) { }
+    private formBuilder: FormBuilder,private router: Router,) {
+
+    }
 
   ngOnInit(): void {
     this.createProfileForm();
@@ -28,7 +30,9 @@ export class LoginComponent implements OnInit {
   onSubmitForm(): any {
     this.serviceHttp.postLogin(this.loginForm.value).subscribe(data => {
       if(data.status === 200) {
+        console.log(data);
         this.cookieService.set('token',data.token);
+        localStorage.setItem('nhanvien',JSON.stringify(data.data))
         this.router.navigate(['/admin'])
       }
     })

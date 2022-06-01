@@ -12,13 +12,19 @@ import { HomePageComponent } from './modules/core/component/home/home-page/home-
 import { ServiceHttpService } from './modules/share/service-http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { DataTablesModule } from 'angular-datatables';
+import { NhanvienComponent } from './modules/core/component/admin/nhanvien/nhanvien.component';
+import { ThongkeComponent } from './modules/core/component/admin/thongke/thongke.component';
+import { AdminComponent } from './modules/core/component/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    AdminComponent,
     HomePageComponent,
+    NhanvienComponent,
+    ThongkeComponent,
   ],
   imports: [
     BrowserModule,

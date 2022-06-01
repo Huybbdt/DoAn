@@ -6,6 +6,8 @@ import { HomeComponent } from './modules/core/component/home/home.component';
 import { LoginComponent } from './modules/core/component/home/login/login.component';
 import { HomePageComponent } from './modules/core/component/home/home-page/home-page.component';
 import { AuthGuard } from './modules/auth.guard';
+import { NhanvienComponent } from './modules/core/component/admin/nhanvien/nhanvien.component';
+import { ThongkeComponent } from './modules/core/component/admin/thongke/thongke.component';
 
 const routes: Routes = [
   {
@@ -24,7 +26,15 @@ const routes: Routes = [
   {
     path: 'admin',
    component: AdminComponent,
-   canActivate: [AuthGuard]
+   canActivate: [AuthGuard],
+   children: [
+    { path: '',
+    component:  ThongkeComponent,
+    },
+    { path: 'nhanvien',
+    component: NhanvienComponent,
+    },
+  ]
   },
   {
     path: '**',

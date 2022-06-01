@@ -19,15 +19,6 @@ function route(app) {
   app.use('/api/v1/hoadondiennuoc', hoadondiennuocRouter);
   app.use('/api/v1/phiktx', phiktxRouter);
 
-
-
-
-  app.get('/', (req, res) => {
-    res.render('home', { layout: 'main' });
-  });
-  // app.get('/admin',(req, res) => {
-  //     res.render('login',{layout: 'admin'});
-  // });
 }
 
 module.exports = route;
