@@ -1,17 +1,15 @@
 const NhanVien = require('../models/NhanVien');
 const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 class loginController {
   async postLogin(req, res) {
     const { username, password } = req.body;
-    console.log(req.body);
     if (!username || !password) {
       return res.status(400).json({ message: 'fail to login' });
     }
     try {
       const user = await NhanVien.findOne({ username });
-      console.log(user);
       if (!user) {
         return res.json({ message: 'user invalid' });
       }

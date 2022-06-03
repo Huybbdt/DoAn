@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const phongController = require('../app/controllers/phong.controller');
+const phongController = require('../app/controllers/Phong');
 
 router.get('/', phongController.getAllPhong);
 router.get('/:id', phongController.getPhong);

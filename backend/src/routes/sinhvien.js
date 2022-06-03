@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sinhvienController = require('../app/controllers/sinhvien.controller');
+const sinhvienController = require('../app/controllers/SinhVien');
 
 router.get('/', sinhvienController.getAllSinhVien);
 router.get('/:id', sinhvienController.getSinhVien);

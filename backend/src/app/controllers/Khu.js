@@ -1,10 +1,10 @@
-const PhiKTX = require('../models/PhiKTX');
+const Khu = require('../models/Khu');
 
 require('dotenv').config();
 class NewController {
-  async getAllPhiKTX(req, res, next) {
+  async getAllKhu(req, res, next) {
     try {
-      const data = await PhiKTX.find();
+      const data = await Khu.find();
       res.status(201).json({
         message: 'success',
         data: data,
@@ -13,9 +13,9 @@ class NewController {
       res.json({ message: error });
     }
   }
-  async getPhiKTX(req, res, next) {
+  async getKhu(req, res, next) {
     try {
-      const data = await PhiKTX.findById({ _id: req.params.id});
+      const data = await Khu.findById({ _id: req.params.id});
       res.status(201).json({
         message: 'success',
         data: data,
@@ -25,17 +25,17 @@ class NewController {
     }
   }
 
-  async createPhiKTX(req, res, next) {
-    let data = await PhiKTX.create(req.body);
+  async createKhu(req, res, next) {
+    let data = await Khu.create(req.body);
     res.json({
       message: 'success',
       data: data,
     });
   }
 
-  async editPhiKTX(req, res) {
+  async editKhu(req, res) {
     try {
-      let data = await PhiKTX.findByIdAndUpdate(req.params.id).exec();
+      let data = await Khu.findByIdAndUpdate(req.params.id).exec();
       data.set(req.body);
       let result = await data.save();
       res.json({
@@ -47,9 +47,9 @@ class NewController {
     }
   }
 
-  async deletePhiKTX(req, res) {
+  async deleteKhu(req, res) {
     try {
-      const data = await PhiKTX.findByIdAndDelete({ _id: req.params.id });
+      const data = await Khu.findByIdAndDelete({ _id: req.params.id });
       res.status(201).json({
         message: 'success',
         data: data,

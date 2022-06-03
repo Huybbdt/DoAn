@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const thongbaoController = require('../app/controllers/thongbao.controller');
+const thongbaoController = require('../app/controllers/ThongBao');
 
 router.get('/', thongbaoController.getAllThongBao);
 router.get('/:id', thongbaoController.getThongBao);
