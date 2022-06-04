@@ -1,27 +1,21 @@
-const NhanVien = require('../models/NhanVien');
+const TaiKhoan = require('../models/TaiKhoan');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 class loginController {
   async postLogin(req, res) {
-    const { username, password } = req.body;
-    if (!username || !password) {
-      return res.status(400).json({ message: 'fail to login' });
+    const { Email, MatKhau } = req.body;
+    if (!Email || !MatKhau) {
+      return res.status(400).json({ message: 'Email hoặc mật khẩu không được trống' });
     }
     try {
-      const user = await NhanVien.findOne({ username });
-      if (!user) {
-        return res.json({ message: 'user invalid' });
+      const data = await TaiKhoan.findOne({ Email , MatKhau });
+      if (!data) {
+        return res.json({ message: 'Email hoặc mật khẩu Không đúng' });
       }
-      // const validPass = argon2.verify(user.password, password);
-
-      if (password != user.password) {
-        return res.json({ message: 'password invalid' });
-      }
-
       const accessToken = jwt.sign(
-        { userId: user._id },
-        process.env.SECRET_TOKEN,
+        { Emai: data.Emai },
+          process.env.SECRET_TOKEN,
         {
           expiresIn: 20,
         }
@@ -31,7 +25,7 @@ class loginController {
         status: 200,
         message: 'Success',
         token: accessToken,
-        data: user
+        data: {NhanvienID: data.NhanVienID, Email: data.Email}
       });
     } catch (error) {
       res.send(error);

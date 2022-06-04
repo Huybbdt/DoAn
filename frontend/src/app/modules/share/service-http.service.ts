@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ServiceHttpService {
 
-  private url = 'http://127.0.0.1:3000/api/v1/'
+  private url = 'http://127.0.0.1:3000/'
   constructor(private httpClient: HttpClient) {}
   private httOptions ={
     headers: new HttpHeaders({
@@ -18,56 +18,69 @@ export class ServiceHttpService {
       'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
     }),
   };
-  public getAllNhanVien(): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}nhanvien`, this.httOptions);
-  }
+
   public postLogin(data: any): Observable<any> {
     return this.httpClient.post<any>(`${this.url}login`,data);
   }
+// nhân viên
+  public getAllNhanVien(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}nhanvien`, this.httOptions);
+  }
+  public createNhanVien(nhanvien: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}nhanvien/create`,nhanvien, this.httOptions);
+  }
 
-  public getShops(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}shops/${id}`, this.httOptions);
-  }
-  public getProduct(id: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}products/${id}`, this.httOptions);
+  public getNhanVien(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}nhanvien/${id}`, this.httOptions);
   }
 
-  public getForgotPassword(email: any): Observable<any> {
-    return this.httpClient.post<any>(
-      `${this.url}forgot-password`,
-      email,
-      this.httOptions
-    );
+  public updateNhanVien(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}nhanvien/edit/${id}`,data, this.httOptions);
   }
-  public postChangePassword(data: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.url}change-password`,data);
+  public deleteNhanVien(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}nhanvien/delete/${id}`, this.httOptions);
   }
-  public getCategories(): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}categories`, this.httOptions);
+// khu
+  public getAllKhu(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}khu`, this.httOptions);
   }
-  public createCategories(categories: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.url}categories/create`,categories, this.httOptions);
+// Phòng
+  public getAllPhong(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}phong`, this.httOptions);
   }
-  public deleteCategories(id: number): Observable<any> {
-    return this.httpClient.delete<any>(`${this.url}categories/delete/${id}`, this.httOptions);
+  public getPhongTrong(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}phong/phongtrong`, this.httOptions);
   }
-  public updateCategories(data:any,id: number): Observable<any> {
-    return this.httpClient.patch<any>(`${this.url}categories/update/${id}`,data, this.httOptions);
+  public createPhong(phong: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}phong/create`,phong, this.httOptions);
   }
-  public getUser(id:number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}users/${id}`, this.httOptions);
+
+  public getPhong(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}phong/${id}`, this.httOptions);
   }
-  public getListUser(id:number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}users/shop-users-unregistered-shop`, this.httOptions);
+
+  public updatePhong(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}phong/edit/${id}`,data, this.httOptions);
   }
-  public updateShops(data:any,id: number): Observable<any> {
-    return this.httpClient.patch<any>(`${this.url}shops/update/${id}`,data, this.httOptions);
+  public deletePhong(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}phong/delete/${id}`, this.httOptions);
   }
-  public uploadShops(data:any,id: number): Observable<any> {
-    return this.httpClient.post<any>(`${this.url}shops/upload/${id}`,data, {
-      headers: {
-        'Content-Type': "multipart/form-data;  boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'",
-      },
-    });
-  }
+// sinh viên
+public getAllSinhVien(): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}sinhvien`, this.httOptions);
+}
+public createSinhVien(sinhvien: any): Observable<any> {
+  return this.httpClient.post<any>(`${this.url}sinhvien/create`,sinhvien, this.httOptions);
+}
+
+public getSinhVien(id: number): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}sinhvien/${id}`, this.httOptions);
+}
+
+public updateSinhVien(data:any,id: number): Observable<any> {
+  return this.httpClient.put<any>(`${this.url}sinhvien/edit/${id}`,data, this.httOptions);
+}
+public deleteSinhVien(id: number): Observable<any> {
+  return this.httpClient.delete<any>(`${this.url}sinhvien/delete/${id}`, this.httOptions);
+}
 }

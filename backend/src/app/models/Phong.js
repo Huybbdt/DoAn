@@ -2,13 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Phong = new Schema({
-  NhanVienID: {
-    type: Schema.Types.ObjectId,
-    ref: "NhanVien",
-  },
   KhuID: {
     type: Schema.Types.ObjectId,
-    ref: "NhanVien",
+    ref: "Khu",
   },
   TenPhong: { type: String, require: true},
   SoLuongChua: { type: Number, require: true, default: 8},

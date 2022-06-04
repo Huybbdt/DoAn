@@ -24,26 +24,14 @@ class NewController {
       res.status(400).json({ message: error });
     }
   }
-
   async createTaiKhoan(req, res, next) {
-    let taikhoan;
-    if(req.body.MatKhau == '' || req.body.Email == ''){
-        res.json({
-            message: 'Email hoặc Mật khẩu Không được để trống',
-            status: 404,
-          });
-    }else {
-        bcrypt.hash(req.body.MatKhau, 10, function(err, hash) {
-          taikhoan= {...req.body,MatKhau: hash}; 
-        });
-    }
-    let data = await TaiKhoan.create(taikhoan);
-            res.json({
-              message: 'success',
-              data: data,
-      });
+    let data = await TaiKhoan.create(req.body);
+    res.json({
+      message: 'success',
+      data: data,
+    });
   }
-
+  
   async editTaiKhoan(req, res) {
     try {
         if(req.body.MatKhau == '' || req.body.Email == ''){

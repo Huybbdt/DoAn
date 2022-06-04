@@ -14,6 +14,7 @@ class NewController {
     }
   }
   async getNhanVien(req, res, next) {
+    
     try {
       const data = await NhanVien.findById({ _id: req.params.id});
       res.status(201).json({

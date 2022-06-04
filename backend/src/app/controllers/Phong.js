@@ -13,6 +13,19 @@ class NewController {
       res.json({ message: error });
     }
   }
+  async getPhongTrong(req, res, next) {
+    try {
+      const data = await Phong.find();
+      
+      const phongTrong = data.filter((item)=> item.SoLuongChua > item.SoLuongDangO);
+      res.status(201).json({
+        message: 'success',
+        data: phongTrong,
+      });
+    } catch (error) {
+      res.json({ message: error });
+    }
+  }
   async getPhong(req, res, next) {
     try {
       const data = await Phong.findById({ _id: req.params.id});

@@ -8,7 +8,7 @@ const SinhVien = new Schema({
     ref: "Phong",
   },
   HoTen: { type: String, require: true},
-  GioiTinh: { type: Boolean, require: true,default: false },
+  GioiTinh: { type: Boolean,default: false },
   NgaySinh: { type: Date, require: true},
   SDT: { type: String, require: true},
   CMND: { type: String, require: true},
@@ -23,7 +23,7 @@ const SinhVien = new Schema({
   HoTenNguoiThan: { type: String, require: true},
   SDTNguoiThan: { type: String, require: true},
   DiaChiNguoiThan: { type: String, require: true},
-  TrangThai: { type: String, require: true, default: "Đang Chờ Duyệt"},
+  TrangThai: { type: String, default: "Đang Chờ Duyệt"},
 });
 
 module.exports = mongoose.model('SinhVien ',SinhVien);

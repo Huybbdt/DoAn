@@ -3,6 +3,7 @@ const router = express.Router();
 const phongController = require('../app/controllers/Phong');
 
 router.get('/', phongController.getAllPhong);
+router.get('/phongtrong', phongController.getPhongTrong);
 router.get('/:id', phongController.getPhong);
 router.post('/create', phongController.createPhong);
 router.put('/edit/:id', phongController.editPhong);

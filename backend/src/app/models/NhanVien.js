@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const NhanVien = new Schema({
   HoTen: { type: String, require: true},
-  GioiTinh:  { type: Boolean, require: true,default: false },
+  GioiTinh:  { type: Boolean, require: true},
   NgaySinh: { type: Date, require: true},
   SDT: { type: String, require: true},
   CMND: { type: String, require: true},
@@ -11,7 +11,7 @@ const NhanVien = new Schema({
   DanToc: { type: String, require: true},
   TonGiao: { type: String, require: true},
   DiaChi: { type: String, require: true},
-  ChucVu: { type: String, require: true, default: "nhân viên"},
+  ChucVu: { type: String, require: true},
 });
 
 module.exports = mongoose.model('NhanVien',NhanVien);

@@ -16,8 +16,8 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
+    "target": "es5",
+    "module": "commonjs",
     "lib": [
       "es2020",
       "dom"
@@ -29,7 +29,9 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true,
+    "strictDomEventTypes": false,
   },
 
 }

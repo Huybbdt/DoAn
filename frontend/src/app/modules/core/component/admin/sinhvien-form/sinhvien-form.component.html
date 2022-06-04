@@ -1,0 +1,154 @@
+<div class="container-form" >
+  <form  *ngIf="sinhVienForm"  [formGroup]="sinhVienForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên: </label>
+      <div class="col-sm-10">
+        <input type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="HoTen"  placeholder="Nhập Họ và tên">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Giới tính: </label>
+      <div class="col-sm-10">
+        <input *ngIf="isDisabledEdit && sinhVienForm.value['GioiTinh']" type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" value="Name">
+        <input *ngIf="isDisabledEdit && !sinhVienForm.value['GioiTinh']" type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" value="Nữ">
+        <select  *ngIf="!isDisabledEdit"  Class="form-control" formControlName="GioiTinh">
+          <option [value]=true>Nam</option>
+          <option [value]=false>Nữ</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Ngày sinh: </label>
+      <div class="col-sm-10">
+      <input type="date"   [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}"   formControlName="NgaySinh" id="birthday" name="birthday">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="SDT"  placeholder="Nhập SĐT">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">CMND: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="CMND"  placeholder="Nhập CMND">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Nơi cấp: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="NoiCap"  placeholder="Nhập Nơi cấp">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Dân tộc: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DanToc"  placeholder="Nhập Dân tộc">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tôn giáo: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="TonGiao"  placeholder="Nhập Tôn giáo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Mã sinh viên: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="MaSV"  placeholder="Nhập Mã sinh viên">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Lớp: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Lop"  placeholder="Nhập Lớp">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Khoa: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Khoa"  placeholder="Nhập Khoa">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Trường: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Truong"  placeholder="Nhập Trường">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DiaChi"  placeholder="Nhập Địa chỉ">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên người thân: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="HoTenNguoiThan"  placeholder="Nhập SĐT người thân">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT người thân: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="SDTNguoiThan"  placeholder="Nhập họ và tên người thân">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ người thân: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DiaChiNguoiThan"  placeholder="Nhập Địa Chỉ Người Thân">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phòng: </label>
+      <div class="col-sm-10">
+        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="PhongID"  placeholder="Nhập Phòng">
+        <ng-select #select [items]="phongTrong" [searchable]="false" [(ngModel)]="selectedPhong" bindLabel="TenPhong" bindValue="TenPhong"  (change)="onChange($event)">
+          <ng-template ng-header-tmp>
+              <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+          </ng-template>
+      </ng-select>
+      </div>
+    </div>
+    <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
+    <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+        <button type="button" class="btn btn-outline-dark" (click)="onSubmitForm(content2)" (click)="c('Save click')">{{textBtn}}</button>
+        <ng-template #content2 let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{message}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template #content3 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+      </div>
+    </ng-template>
+  </form>
+</div>
+

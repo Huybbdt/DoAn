@@ -15,7 +15,12 @@ import { DataTablesModule } from 'angular-datatables';
 import { NhanvienComponent } from './modules/core/component/admin/nhanvien/nhanvien.component';
 import { ThongkeComponent } from './modules/core/component/admin/thongke/thongke.component';
 import { AdminComponent } from './modules/core/component/admin/admin.component';
-
+import { NhanvienFormComponent } from './modules/core/component/admin/nhanvien-form/nhanvien-form.component';
+import { PhongComponent } from './modules/core/component/admin/phong/phong.component';
+import { PhongFormComponent } from './modules/core/component/admin/phong-form/phong-form.component';
+import { SinhvienComponent } from './modules/core/component/admin/sinhvien/sinhvien.component';
+import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-form/sinhvien-form.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +30,11 @@ import { AdminComponent } from './modules/core/component/admin/admin.component';
     HomePageComponent,
     NhanvienComponent,
     ThongkeComponent,
+    NhanvienFormComponent,
+    PhongComponent,
+    PhongFormComponent,
+    SinhvienComponent,
+    SinhvienFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +43,8 @@ import { AdminComponent } from './modules/core/component/admin/admin.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    NgSelectModule
   ],
   providers: [ServiceHttpService,CookieService],
   bootstrap: [AppComponent],
