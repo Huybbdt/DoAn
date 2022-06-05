@@ -40,15 +40,16 @@
           >
             Edit
           </button>
-          <button (click)="open(content,{textBtn: 'Xóa', message: 'Bạn có chắc chắn muốn xóa'},person)"  class=" mr-2 btn-icon btn-icon-only  btn-sm btn btn-outline-danger">
-            <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
-          </button>
           <button
-          class="btn-wide btn btn-success"
+          class="btn-wide btn btn-info  mr-2"
           [routerLink]="['/admin/taikhoan/', person._id]"
         >
-          tài khoản
+        Account
         </button>
+          <button (click)="open(content,{textBtn: 'Xóa', message: 'Bạn có chắc chắn muốn xóa'},person)"  class="btn-icon btn-icon-only  btn-sm btn btn-outline-danger">
+            <i class="pe-7s-trash btn-icon-wrapper"></i>
+          </button>
+
           <ng-template #content let-c="close" let-d="dismiss">
             <div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
