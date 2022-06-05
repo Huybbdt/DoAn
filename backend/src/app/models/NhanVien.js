@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const NhanVien = new Schema({
-    hoTen: { type: String, require: true},
-    ngaySinh: { type: Date, require: true},
-    diaChi: { type: String, require: true},
-    chucVu: { type: String, require: true},
-    gioiTinh: { type: String, require: true},
-    sdt: { type: String, require: true},
-    cmnd: { type: String, require: true},
-    email: { type: String, require: true, unique: true},
-    username: { type: String, require: true, minLength: 6, maxLength: 20, unique: true},
-    password: { type: String, require: true, minLength:8, maxLength: 32},
-  });
+  HoTen: { type: String, require: true},
+  GioiTinh:  { type: Boolean, require: true},
+  NgaySinh: { type: Date, require: true},
+  SDT: { type: String, require: true},
+  CMND: { type: String, require: true},
+  NoiCap: { type: String, require: true},
+  DanToc: { type: String, require: true},
+  TonGiao: { type: String, require: true},
+  DiaChi: { type: String, require: true},
+  ChucVu: { type: String, require: true},
+});
 
 module.exports = mongoose.model('NhanVien',NhanVien);

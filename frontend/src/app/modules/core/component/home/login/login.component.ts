@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   }
   createProfileForm(): void {
     this.loginForm = this.formBuilder.group({
-      username: [ '', [Validators.required]
+      Email: [ '', [Validators.required]
       ],
-      password: [ '', [Validators.required]],
+      MatKhau: [ '', [Validators.required]],
     });
     // this.editUserForm.valueChanges.subscribe((data) => { });
   }

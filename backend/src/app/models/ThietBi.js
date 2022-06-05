@@ -6,10 +6,10 @@ const ThietBi = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Phong",
     },
-    tenThietBi: { type: String, require: true},
-    soLuong: { type: Number, require: true},
-    tinhTrang: { type: String, require: true},
-    moTa: { type: String},
+    TenTB: { type: String, require: true},
+    SoLuong: { type: Number, require: true,default: 1},
+    TinhTrang: { type: String, require: true,default: "Còn sử Dụng Được"},
+    MoTa: { type: String},
   
    
   });

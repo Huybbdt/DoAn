@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const thietbiController = require('../app/controllers/thietbi.controller');
+const thietbiController = require('../app/controllers/ThietBi');
 
 router.get('/', thietbiController.getAllThietBi);
 router.get('/:id', thietbiController.getThietBi);

@@ -6,9 +6,9 @@ const ThongBao = new Schema({
         type: Schema.Types.ObjectId,
         ref: "NhanVien",
     },
-    tieuDe: { type: String, require: true},
-    noiDung: { type: String},
-    anh: { type: String},
+    TieuDe: { type: String, require: true},
+    NoiDung: { type: String},
+    Anh: { type: String},
    
   });
 

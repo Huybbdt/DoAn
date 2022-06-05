@@ -1,10 +1,10 @@
-const PhiKTX = require('../models/PhiKTX');
+const BienLaiThuTien = require('../models/BienLaiThuTien');
 
 require('dotenv').config();
 class NewController {
-  async getAllPhiKTX(req, res, next) {
+  async getAllBienLaiThuTien(req, res, next) {
     try {
-      const data = await PhiKTX.find();
+      const data = await BienLaiThuTien.find();
       res.status(201).json({
         message: 'success',
         data: data,
@@ -13,9 +13,9 @@ class NewController {
       res.json({ message: error });
     }
   }
-  async getPhiKTX(req, res, next) {
+  async getBienLaiThuTien(req, res, next) {
     try {
-      const data = await PhiKTX.findById({ _id: req.params.id});
+      const data = await BienLaiThuTien.findById({ _id: req.params.id});
       res.status(201).json({
         message: 'success',
         data: data,
@@ -25,17 +25,17 @@ class NewController {
     }
   }
 
-  async createPhiKTX(req, res, next) {
-    let data = await PhiKTX.create(req.body);
+  async createBienLaiThuTien(req, res, next) {
+    let data = await BienLaiThuTien.create(req.body);
     res.json({
       message: 'success',
       data: data,
     });
   }
 
-  async editPhiKTX(req, res) {
+  async editBienLaiThuTien(req, res) {
     try {
-      let data = await PhiKTX.findByIdAndUpdate(req.params.id).exec();
+      let data = await BienLaiThuTien.findByIdAndUpdate(req.params.id).exec();
       data.set(req.body);
       let result = await data.save();
       res.json({
@@ -47,9 +47,9 @@ class NewController {
     }
   }
 
-  async deletePhiKTX(req, res) {
+  async deleteBienLaiThuTien(req, res) {
     try {
-      const data = await PhiKTX.findByIdAndDelete({ _id: req.params.id });
+      const data = await BienLaiThuTien.findByIdAndDelete({ _id: req.params.id });
       res.status(201).json({
         message: 'success',
         data: data,

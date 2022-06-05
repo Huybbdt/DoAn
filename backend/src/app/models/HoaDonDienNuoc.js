@@ -2,22 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const HoaDonDienNuoc = new Schema({
-    nhanVienID: {
+    NhanVienID: {
         type: Schema.Types.ObjectId,
         ref: "NhanVien",
     },
-    phongID: {
+    PhongID: {
         type: Schema.Types.ObjectId,
         ref: "Phong",
     },
-    soDienDau: {type: Number,require: true},
-    soDienCuoi: {type: Number,require: true},
-    phiDien: {type: Number,require: true},
-    soNuocDau: {type: Number,require: true},
-    soNuocCuoi: {type: Number,require: true},
-    phiNuoc: {type: Number,require: true},
-    ngayLap: { type: Date, require: true, default: Date.now()},
-    tongTien: { type: Number, require: true}
+    HoTenNguoiNop: {type: String},
+    ChiSoDienDauKy: {type: Number,require: true},
+    ChiSoDienCuoiKy: {type: Number,require: true},
+    DonGiaDien: {type: Number,require: true},
+    ChiSoNuocDauKy: {type: Number,require: true},
+    ChiSoNuocDauKy: {type: Number,require: true},
+    DonGiaNuoc: {type: Number,require: true},
+    TongTien: { type: Number, require: true},
+    NgayLap: { type: Date},
    
   });
 
