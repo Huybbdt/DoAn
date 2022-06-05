@@ -1,0 +1,25 @@
+.ul.list-style-2{
+  padding: 0;
+  list-style: none;
+  .ul.list-style-2 li{
+    position: relative;
+      padding-left: 31px;
+      margin-bottom: 8px;
+  }
+  .ul.list-style-2 li:before{
+    position: absolute;
+      content: '';
+      display: block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0, 0);
+      left: 3px;
+      top: 4px;
+      content: "\f058";
+      font-size: 14px;
+      color: #f26522;
+  }
+}
