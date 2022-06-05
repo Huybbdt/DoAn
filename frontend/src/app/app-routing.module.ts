@@ -13,6 +13,7 @@ import { PhongComponent } from './modules/core/component/admin/phong/phong.compo
 import { PhongFormComponent } from './modules/core/component/admin/phong-form/phong-form.component';
 import { SinhvienComponent } from './modules/core/component/admin/sinhvien/sinhvien.component';
 import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-form/sinhvien-form.component';
+import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-form/taikhoan-form.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
       }, {
         path: 'sinhvien/:active/:id',
         component: SinhvienFormComponent,
+      },
+      {
+        path: 'taikhoan/:id',
+        component: TaikhoanFormComponent,
       }
     ],
   },

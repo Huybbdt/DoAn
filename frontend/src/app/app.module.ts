@@ -21,6 +21,7 @@ import { PhongFormComponent } from './modules/core/component/admin/phong-form/ph
 import { SinhvienComponent } from './modules/core/component/admin/sinhvien/sinhvien.component';
 import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-form/sinhvien-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-form/taikhoan-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     PhongFormComponent,
     SinhvienComponent,
     SinhvienFormComponent,
+    TaikhoanFormComponent,
   ],
   imports: [
     BrowserModule,

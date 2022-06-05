@@ -17,8 +17,10 @@ export class SinhvienFormComponent implements OnInit {
   message:any;
   isDisabledEdit: boolean = false;
   textSubmit : string;
-  phongTrong: any = [];
+  public phongTrong: any = [];
   selectedPhong:any;
+  phong:any;
+  phongAll: any;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,private modalService: NgbModal) { }
 
@@ -46,21 +48,25 @@ export class SinhvienFormComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.getPhong();
+    this.serviceHttp.getPhongTrong().subscribe((data) => {
+      this.phongTrong = data.data;
+      this.sinhVienForm.patchValue({ PhongID :  this.phongTrong[0]._id});
+    });
     this.activatedRoute.params.subscribe((params) => {
       this.params = params;
     });
 
     if (this.params['active'] === 'create') {
         this.createSinhVienForm();
-        this.textSubmit = 'Tạo mới'
+        this.textSubmit = 'Tạo mới';
     }else {
       this.serviceHttp.getSinhVien(this.params['id']).subscribe((data) => {
         this.formData = {...data.data, NgaySinh:this.formatDate(data.data.NgaySinh)} ;
         this.createSinhVienForm(this.formData);
       });
       if(this.params['active'] === 'details') {
-        this.isDisabledEdit = true
+        this.isDisabledEdit = true;
+        this.getAllPhong();
       } else {
         this.textSubmit = 'Cập nhật'
       }
@@ -69,21 +75,16 @@ export class SinhvienFormComponent implements OnInit {
   getPhong() {
     this.serviceHttp.getPhongTrong().subscribe((data) => {
       this.phongTrong = data.data;
-      this.selectedPhong = this.phongTrong[0].TenPhong
     });
   }
-  onChange(eventData: any){
-    this.sinhVienForm.patchValue({
-      PhongID: eventData._id
-    })
-    console.log("CHANGE EVENT DATA:", eventData._id);
-  }
+
   onSubmitForm(content?:any) {
     if(this.params['active'] === 'create') {
       this.serviceHttp.createSinhVien(this.sinhVienForm.value).subscribe((data) => {
         if(data.message == 'success') {
           this.open(content);
           // this.phongForm.reset();
+          this.updatePhong(null,this.sinhVienForm.value.PhongID,'create');
           this.getPhong();
         }
       })
@@ -95,6 +96,7 @@ export class SinhvienFormComponent implements OnInit {
           this.message = 'Bạn  cập nhật thành công';
           this.modalService.open(content);
           // this.phongForm.reset();
+          this.updatePhong(this.formData.PhongID,this.sinhVienForm.value.PhongID,'edit');
           this.getPhong();
         }
       })
@@ -123,5 +125,30 @@ export class SinhvienFormComponent implements OnInit {
       this.message = 'Bạn đã tạo phòng thành công';
     }
     this.modalService.open(modal);
+  }
+
+
+  getAllPhong() {
+    this.serviceHttp.getPhong(this.sinhVienForm.value['PhongID']).subscribe((data) => {
+      this.phongAll = data.data.TenPhong;
+    });
+  }
+  updatePhong(PhongIDCu:any,PhongIDMoi:any,active:string) {
+    if(active == 'edit'){
+      this.serviceHttp.getPhong(PhongIDCu).subscribe((data) => {
+        this.phong = data.data;
+        this.phong.SoLuongDangO = this.phong.SoLuongDangO - 1;
+        this.serviceHttp.updatePhong(this.phong,this.phong._id).subscribe((data) => {
+          console.log(data);
+        });
+      });
+    }
+    this.serviceHttp.getPhong(PhongIDMoi).subscribe((data) => {
+      this.phong = data.data;
+      this.phong.SoLuongDangO = this.phong.SoLuongDangO + 1;
+      this.serviceHttp.updatePhong(this.phong,this.phong._id).subscribe((data) => {
+        console.log(data);
+      });
+    });
   }
 }

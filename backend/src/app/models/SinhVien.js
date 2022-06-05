@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 
 const SinhVien = new Schema({
-  phongID: {
+  PhongID: {
     type: Schema.Types.ObjectId,
     ref: "Phong",
   },

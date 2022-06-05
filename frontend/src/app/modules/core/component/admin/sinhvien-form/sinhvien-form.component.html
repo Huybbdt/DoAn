@@ -3,15 +3,14 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Họ và tên: </label>
       <div class="col-sm-10">
-        <input type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="HoTen"  placeholder="Nhập Họ và tên">
+        <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTen"  placeholder=" {{isDisabledEdit ? '': 'Nhập Họ và tên'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Giới tính: </label>
       <div class="col-sm-10">
-        <input *ngIf="isDisabledEdit && sinhVienForm.value['GioiTinh']" type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" value="Name">
-        <input *ngIf="isDisabledEdit && !sinhVienForm.value['GioiTinh']" type="text" [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" value="Nữ">
-        <select  *ngIf="!isDisabledEdit"  Class="form-control" formControlName="GioiTinh">
+
+        <select  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="GioiTinh">
           <option [value]=true>Nam</option>
           <option [value]=false>Nữ</option>
         </select>
@@ -21,96 +20,95 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Ngày sinh: </label>
       <div class="col-sm-10">
-      <input type="date"   [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}"   formControlName="NgaySinh" id="birthday" name="birthday">
+      <input type="date"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="NgaySinh" id="birthday" name="birthday">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">SĐT: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="SDT"  placeholder="Nhập SĐT">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDT"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">CMND: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="CMND"  placeholder="Nhập CMND">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="CMND"  placeholder="{{isDisabledEdit ? '': 'Nhập CMND'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Nơi cấp: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="NoiCap"  placeholder="Nhập Nơi cấp">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="NoiCap"  placeholder="{{isDisabledEdit ? '': 'Nhập Nơi cấp'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Dân tộc: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DanToc"  placeholder="Nhập Dân tộc">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DanToc"  placeholder="{{isDisabledEdit ? '': 'Nhập Dân tộc'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Tôn giáo: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="TonGiao"  placeholder="Nhập Tôn giáo">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="TonGiao"  placeholder="{{isDisabledEdit ? '': 'Nhập Tôn giáo'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Mã sinh viên: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="MaSV"  placeholder="Nhập Mã sinh viên">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="MaSV"  placeholder="{{isDisabledEdit ? '': 'Nhập Mã sinh viên'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Lớp: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Lop"  placeholder="Nhập Lớp">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Lop"  placeholder="{{isDisabledEdit ? '': 'Nhập Lớp'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Khoa: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Khoa"  placeholder="Nhập Khoa">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Khoa"  placeholder="{{isDisabledEdit ? '': 'Nhập Khoa'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Trường: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="Truong"  placeholder="Nhập Trường">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Truong"  placeholder="{{isDisabledEdit ? '': 'Nhập Trường'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Địa chỉ: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DiaChi"  placeholder="Nhập Địa chỉ">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DiaChi"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa chỉ'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Họ và tên người thân: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="HoTenNguoiThan"  placeholder="Nhập SĐT người thân">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTenNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT người thân'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">SĐT người thân: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="SDTNguoiThan"  placeholder="Nhập họ và tên người thân">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDTNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập họ và tên người thân'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Địa chỉ người thân: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="DiaChiNguoiThan"  placeholder="Nhập Địa Chỉ Người Thân">
+        <input [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DiaChiNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa Chỉ Người Thân'}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Phòng: </label>
       <div class="col-sm-10">
-        <input type="text"  [readonly]="isDisabledEdit"  [ngClass]="{'form-control-plaintext': isDisabledEdit,'form-control' : !isDisabledEdit}" formControlName="PhongID"  placeholder="Nhập Phòng">
-        <ng-select #select [items]="phongTrong" [searchable]="false" [(ngModel)]="selectedPhong" bindLabel="TenPhong" bindValue="TenPhong"  (change)="onChange($event)">
-          <ng-template ng-header-tmp>
-              <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
-          </ng-template>
-      </ng-select>
+
+      <select   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="PhongID">
+        <option >Chọn Phòng</option>
+        <option *ngFor="let phong of phongTrong" value="{{phong._id}}">{{phong.TenPhong}}</option>
+      </select>
       </div>
     </div>
     <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">{{textSubmit}}</button>

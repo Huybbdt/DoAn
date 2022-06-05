@@ -83,4 +83,22 @@ public updateSinhVien(data:any,id: number): Observable<any> {
 public deleteSinhVien(id: number): Observable<any> {
   return this.httpClient.delete<any>(`${this.url}sinhvien/delete/${id}`, this.httOptions);
 }
+// tài khoản
+public getAllTaiKHoan(): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}taikhoan`, this.httOptions);
+}
+public createTaiKHoan(taikhoan: any): Observable<any> {
+  return this.httpClient.post<any>(`${this.url}taikhoan/create`,taikhoan, this.httOptions);
+}
+
+public getTaiKHoan(id: number): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}taikhoan/${id}`, this.httOptions);
+}
+
+public updateTaiKHoan(data:any,id: number): Observable<any> {
+  return this.httpClient.put<any>(`${this.url}taikhoan/edit/${id}`,data, this.httOptions);
+}
+public deleteTaiKHoan(id: number): Observable<any> {
+  return this.httpClient.delete<any>(`${this.url}taikhoan/delete/${id}`, this.httOptions);
+}
 }

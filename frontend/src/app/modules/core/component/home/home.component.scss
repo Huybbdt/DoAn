@@ -3,6 +3,12 @@
   padding: unset;
   background-color: #002878;
 }
+
+.nav-link{
+  color: #fff !important;
+  font-weight: 600;
+}
+
 #navbarCollapse {
   max-width: 1140px;
   margin: 0 auto;
@@ -28,10 +34,8 @@
   border-right: 1px solid #fff;
 }
 .nav-link-active{
-  background-image: linear-gradient(#4389f6, #0000cc);
-}
-.nav-link:hover {
-  background-image: linear-gradient(#4389f6, #0000cc);
+  background-color: #ff6600;
+  color: #fff !important;
 }
 @media only screen and (max-width: 768px) {
   .navbar {
