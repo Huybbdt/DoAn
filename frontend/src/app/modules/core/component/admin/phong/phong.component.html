@@ -42,29 +42,29 @@
           >
             Edit
           </button>
-          <button (click)="open(content,{textBtn: 'Xóa', message: 'Bạn có chắc chắn muốn xóa'},item)"  class="btn-icon btn-icon-only btn btn-outline-danger">
+          <button (click)="open(confirm)"  class="btn-icon btn-icon-only btn btn-outline-danger">
             <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
           </button>
-          <ng-template #content let-c="close" let-d="dismiss">
+          <ng-template #confirm let-c="close" let-d="dismiss">
             <div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
 
             </div>
             <div class="modal-body">
-              <p>{{message}}</p>
+              <p>Bạn chắn chắn muốn xóa phòng: <strong>{{item.TenPhong}}</strong> ?</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
-              <button type="button" class="btn btn-outline-dark" (click)="deletePhong(item._id,content2)" (click)="c('Save click')">{{textBtn}}</button>
-              <ng-template #content2 let-c="close" let-d="dismiss">
+              <button type="button" class="btn btn-danger" (click)="deletePhong(item._id,deleted)" (click)="c('Save click')">Xóa</button>
+              <ng-template #deleted let-c="close" let-d="dismiss">
                 <div class="modal-header">
                   <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
                 </div>
                 <div class="modal-body">
-                  <p>{{message}}</p>
+                  <p>Bạn đã xóa thành công phòng: <strong>{{item.TenPhong}}</strong> </p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
                 </div>
               </ng-template>
             </div>

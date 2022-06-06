@@ -25,9 +25,6 @@ export class AdminComponent implements OnInit {
   });
   this.nhanvien = localStorage.getItem('nhanvien');
   this.nhanvien =  JSON.parse(this.nhanvien);
-  console.log(this.nhanvien);
-
-  //  this.getNhanVien(this.data.data.NhanvienID);
   }
   getNhanVien(id:any) {
     this.serviceHttp.getNhanVien(id).subscribe(data => {

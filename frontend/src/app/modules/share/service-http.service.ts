@@ -65,40 +65,58 @@ export class ServiceHttpService {
   public deletePhong(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.url}phong/delete/${id}`, this.httOptions);
   }
-// sinh viên
-public getAllSinhVien(): Observable<any> {
-  return this.httpClient.get<any>(`${this.url}sinhvien`, this.httOptions);
-}
-public createSinhVien(sinhvien: any): Observable<any> {
-  return this.httpClient.post<any>(`${this.url}sinhvien/create`,sinhvien, this.httOptions);
-}
+  // sinh viên
+  public getAllSinhVien(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}sinhvien`, this.httOptions);
+  }
+  public createSinhVien(sinhvien: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}sinhvien/create`,sinhvien, this.httOptions);
+  }
 
-public getSinhVien(id: number): Observable<any> {
-  return this.httpClient.get<any>(`${this.url}sinhvien/${id}`, this.httOptions);
-}
+  public getSinhVien(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}sinhvien/${id}`, this.httOptions);
+  }
 
-public updateSinhVien(data:any,id: number): Observable<any> {
-  return this.httpClient.put<any>(`${this.url}sinhvien/edit/${id}`,data, this.httOptions);
-}
-public deleteSinhVien(id: number): Observable<any> {
-  return this.httpClient.delete<any>(`${this.url}sinhvien/delete/${id}`, this.httOptions);
-}
-// tài khoản
-public getAllTaiKHoan(): Observable<any> {
-  return this.httpClient.get<any>(`${this.url}taikhoan`, this.httOptions);
-}
-public createTaiKHoan(taikhoan: any): Observable<any> {
-  return this.httpClient.post<any>(`${this.url}taikhoan/create`,taikhoan, this.httOptions);
-}
+  public updateSinhVien(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}sinhvien/edit/${id}`,data, this.httOptions);
+  }
+  public deleteSinhVien(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}sinhvien/delete/${id}`, this.httOptions);
+  }
+  // tài khoản
+  public getAllTaiKHoan(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}taikhoan`, this.httOptions);
+  }
+  public createTaiKHoan(taikhoan: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}taikhoan/create`,taikhoan, this.httOptions);
+  }
 
-public getTaiKHoan(id: number): Observable<any> {
-  return this.httpClient.get<any>(`${this.url}taikhoan/${id}`, this.httOptions);
-}
+  public getTaiKHoan(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}taikhoan/${id}`, this.httOptions);
+  }
 
-public updateTaiKHoan(data:any,id: number): Observable<any> {
-  return this.httpClient.put<any>(`${this.url}taikhoan/edit/${id}`,data, this.httOptions);
-}
-public deleteTaiKHoan(id: number): Observable<any> {
-  return this.httpClient.delete<any>(`${this.url}taikhoan/delete/${id}`, this.httOptions);
-}
+  public updateTaiKHoan(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}taikhoan/edit/${id}`,data, this.httOptions);
+  }
+  public deleteTaiKHoan(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}taikhoan/delete/${id}`, this.httOptions);
+  }
+  // Thông báo
+  public getAllThongBao(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}thongbao`, this.httOptions);
+  }
+  public createThongBao(thongbao: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}thongbao/create`,thongbao, this.httOptions);
+  }
+
+  public getThongBao(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}thongbao/${id}`, this.httOptions);
+  }
+
+  public updateThongBao(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}thongbao/edit/${id}`,data, this.httOptions);
+  }
+  public deleteThongBao(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}thongbao/delete/${id}`, this.httOptions);
+  }
 }

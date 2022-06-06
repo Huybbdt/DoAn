@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
 
@@ -13,17 +13,33 @@ export class SinhvienFormComponent implements OnInit {
   params: any;
   sinhVienForm: FormGroup;
   formData: any;
-  textBtn:any;
-  message:any;
   isDisabledEdit: boolean = false;
-  textSubmit : string;
   public phongTrong: any = [];
   selectedPhong:any;
-  phong:any;
-  phongAll: any;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
-    private activatedRoute: ActivatedRoute,private modalService: NgbModal) { }
+    private activatedRoute: ActivatedRoute,private modalService: NgbModal,private router: Router) { }
 
+  ngOnInit(): void {
+    this.serviceHttp.getPhongTrong().subscribe((data) => {
+      this.phongTrong = data.data;
+      this.sinhVienForm.patchValue({ PhongID :  this.phongTrong[0]._id});
+    });
+    this.activatedRoute.params.subscribe((params) => {
+      this.params = params;
+    });
+
+    if (this.params['active'] === 'create') {
+        this.createSinhVienForm();
+    }else {
+      this.serviceHttp.getSinhVien(this.params['id']).subscribe((data) => {
+        this.formData = {...data.data, NgaySinh:this.formatDate(data.data.NgaySinh)} ;
+        this.createSinhVienForm(this.formData);
+      });
+      if(this.params['active'] === 'details') {
+        this.isDisabledEdit = true;
+      }
+    }
+  }
 
   createSinhVienForm(data?: any):void {
     this.sinhVienForm = this.formBuilder.group({
@@ -47,57 +63,21 @@ export class SinhvienFormComponent implements OnInit {
       TrangThai: [ data? data.TrangThai : 'Đang ở',],
     });
   }
-  ngOnInit(): void {
-    this.serviceHttp.getPhongTrong().subscribe((data) => {
-      this.phongTrong = data.data;
-      this.sinhVienForm.patchValue({ PhongID :  this.phongTrong[0]._id});
-    });
-    this.activatedRoute.params.subscribe((params) => {
-      this.params = params;
-    });
-
-    if (this.params['active'] === 'create') {
-        this.createSinhVienForm();
-        this.textSubmit = 'Tạo mới';
-    }else {
-      this.serviceHttp.getSinhVien(this.params['id']).subscribe((data) => {
-        this.formData = {...data.data, NgaySinh:this.formatDate(data.data.NgaySinh)} ;
-        this.createSinhVienForm(this.formData);
-      });
-      if(this.params['active'] === 'details') {
-        this.isDisabledEdit = true;
-        this.getAllPhong();
-      } else {
-        this.textSubmit = 'Cập nhật'
-      }
-    }
-  }
-  getPhong() {
-    this.serviceHttp.getPhongTrong().subscribe((data) => {
-      this.phongTrong = data.data;
-    });
-  }
 
   onSubmitForm(content?:any) {
     if(this.params['active'] === 'create') {
       this.serviceHttp.createSinhVien(this.sinhVienForm.value).subscribe((data) => {
         if(data.message == 'success') {
           this.open(content);
-          // this.phongForm.reset();
-          this.updatePhong(null,this.sinhVienForm.value.PhongID,'create');
-          this.getPhong();
+          this.router.navigate(['/admin/sinhvien']);
         }
       })
     }
     if(this.params['active'] === 'edit') {
       this.serviceHttp.updateSinhVien(this.sinhVienForm.value,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
-          this.textBtn = 'OKE';
-          this.message = 'Bạn  cập nhật thành công';
           this.modalService.open(content);
-          // this.phongForm.reset();
-          this.updatePhong(this.formData.PhongID,this.sinhVienForm.value.PhongID,'edit');
-          this.getPhong();
+          this.router.navigate(['/admin/sinhvien']);
         }
       })
     }
@@ -116,39 +96,7 @@ export class SinhvienFormComponent implements OnInit {
     return [year, month, day].join('-');
   }
   open(modal:any) {
-    if(this.params['active'] === 'edit') {
-      this.textBtn = 'Cập nhật';
-      this.message = 'Bạn chắn chắn muốn cập nhật';
-    }
-    if (this.params['active'] === 'create') {
-      this.textBtn = 'OKE';
-      this.message = 'Bạn đã tạo phòng thành công';
-    }
     this.modalService.open(modal);
   }
 
-
-  getAllPhong() {
-    this.serviceHttp.getPhong(this.sinhVienForm.value['PhongID']).subscribe((data) => {
-      this.phongAll = data.data.TenPhong;
-    });
-  }
-  updatePhong(PhongIDCu:any,PhongIDMoi:any,active:string) {
-    if(active == 'edit'){
-      this.serviceHttp.getPhong(PhongIDCu).subscribe((data) => {
-        this.phong = data.data;
-        this.phong.SoLuongDangO = this.phong.SoLuongDangO - 1;
-        this.serviceHttp.updatePhong(this.phong,this.phong._id).subscribe((data) => {
-          console.log(data);
-        });
-      });
-    }
-    this.serviceHttp.getPhong(PhongIDMoi).subscribe((data) => {
-      this.phong = data.data;
-      this.phong.SoLuongDangO = this.phong.SoLuongDangO + 1;
-      this.serviceHttp.updatePhong(this.phong,this.phong._id).subscribe((data) => {
-        console.log(data);
-      });
-    });
-  }
 }

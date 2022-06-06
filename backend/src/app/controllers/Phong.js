@@ -1,5 +1,5 @@
 const Phong = require('../models/Phong');
-
+const ThietBi = require('../models/ThietBi');
 require('dotenv').config();
 class NewController {
   async getAllPhong(req, res, next) {
@@ -16,7 +16,6 @@ class NewController {
   async getPhongTrong(req, res, next) {
     try {
       const data = await Phong.find();
-      
       const phongTrong = data.filter((item)=> item.SoLuongChua > item.SoLuongDangO);
       res.status(201).json({
         message: 'success',

@@ -104,47 +104,49 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Phòng: </label>
       <div class="col-sm-10">
-
       <select   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="PhongID">
         <option >Chọn Phòng</option>
         <option *ngFor="let phong of phongTrong" value="{{phong._id}}">{{phong.TenPhong}}</option>
       </select>
       </div>
     </div>
-    <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
-    <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
-    <ng-template #content let-c="close" let-d="dismiss">
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/admin/sinhvien']" class="btn btn-secondary">Trở về</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(created)"  class="btn-wide btn btn-success">Tạo sinh viên</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(confirm)"  class="btn-wide btn btn-success">Cập nhật sinh viên</button>
+    </div>
+    <ng-template #confirm let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>Bạn chắn chắn muốn cập nhật</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
-        <button type="button" class="btn btn-outline-dark" (click)="onSubmitForm(content2)" (click)="c('Save click')">{{textBtn}}</button>
-        <ng-template #content2 let-c="close" let-d="dismiss">
+        <button type="button" class="btn btn-warning" (click)="onSubmitForm(updated)" (click)="c('Save click')">Cập Nhật</button>
+        <ng-template #updated let-c="close" let-d="dismiss">
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
+            <p>Bạn đã cập nhật phòng phòng thành công</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
           </div>
         </ng-template>
       </div>
     </ng-template>
-    <ng-template #content3 let-c="close" let-d="dismiss">
+    <ng-template #created let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>Bạn đã tạo phòng thành công</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
       </div>
     </ng-template>
   </form>

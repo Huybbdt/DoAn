@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -19,7 +19,7 @@ export class PhongFormComponent implements OnInit {
   isDisabledEdit: boolean = false;
   textSubmit : string;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
-    private activatedRoute: ActivatedRoute,  private modalService: NgbModal) { }
+    private activatedRoute: ActivatedRoute,  private modalService: NgbModal,private router: Router) { }
 
 
   createPhongForm(data?: any):void {
@@ -40,7 +40,6 @@ export class PhongFormComponent implements OnInit {
     });
     if (this.params['active'] === 'create') {
         this.createPhongForm();
-        this.textSubmit = 'Tạo mới'
     }else {
       this.serviceHttp.getPhong(this.params['id']).subscribe((data) => {
         this.formData = data.data;
@@ -48,8 +47,6 @@ export class PhongFormComponent implements OnInit {
       });
       if(this.params['active'] === 'details') {
         this.isDisabledEdit = true;
-      } else {
-        this.textSubmit = 'Cập nhật';
       }
     }
   }
@@ -59,31 +56,21 @@ export class PhongFormComponent implements OnInit {
       this.serviceHttp.createPhong(this.phongForm.value).subscribe((data) => {
         if(data.message == 'success') {
           this.open(content);
-          // this.phongForm.reset();
+          this.router.navigate(['/admin/phong']);
         }
       })
     }
     if(this.params['active'] === 'edit') {
       this.serviceHttp.updatePhong(this.phongForm.value,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
-          this.textBtn = 'OKE';
-          this.message = 'Bạn  cập nhật thành công';
           this.modalService.open(content);
-          // this.phongForm.reset();
+          this.router.navigate(['/admin/phong']);
         }
       })
     }
   }
 
   open(modal:any) {
-    if(this.params['active'] === 'edit') {
-      this.textBtn = 'Cập nhật';
-      this.message = 'Bạn chắn chắn muốn cập nhật';
-    }
-    if (this.params['active'] === 'create') {
-      this.textBtn = 'OKE';
-      this.message = 'Bạn đã tạo phòng thành công';
-    }
     this.modalService.open(modal);
   }
 

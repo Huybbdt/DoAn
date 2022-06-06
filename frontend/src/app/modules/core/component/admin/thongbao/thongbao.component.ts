@@ -1,21 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { HttpParams } from '@angular/common/http';
-declare const $: any;
+
 @Component({
-  selector: 'app-nhanvien',
-  templateUrl: './nhanvien.component.html',
-  styleUrls: ['./nhanvien.component.scss'],
+  selector: 'app-thongbao',
+  templateUrl: './thongbao.component.html',
+  styleUrls: ['./thongbao.component.scss']
 })
-export class NhanvienComponent implements OnInit, OnDestroy {
+export class ThongbaoComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  nhanvien: any = [];
+  thongbao: any = [];
   textBtn:any = '';
   message:any = '';
-  taikhoan:any;
+  khu:any;
   constructor(
     private serviceHttp: ServiceHttpService,
     private modalService: NgbModal,
@@ -43,27 +42,48 @@ export class NhanvienComponent implements OnInit, OnDestroy {
         "previous": "Trước"
       },
     }
-  };
-  this.getListNhanVien();
+    };
+    this.serviceHttp.getAllKhu().subscribe((data) => {
+      this.khu = data.data;
+    });
+    this. getListThongBao();
+
   }
-  deleteNhanVien(nhanvienID: any,modal:any) {
-    this.serviceHttp.deleteNhanVien(nhanvienID).subscribe((data) => {
+  deleteThongBao(thongbaoID: any,modal:any) {
+    this.serviceHttp.deleteThongBao(thongbaoID).subscribe((data) => {
       if(data.message == 'success') {
         this.open(modal);
-        this.getListNhanVien();
       }
     });
+    this.serviceHttp.getAllThongBao().subscribe((data) => {
+      this.thongbao = data.data;
+      this.dtTrigger.next(this.dtOptions);
+    });
   }
+
   open(modal:any) {
     this.modalService.open(modal);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  getListNhanVien() {
-    this.serviceHttp.getAllNhanVien().subscribe((data) => {
-      this.nhanvien = data.data;
+  getListThongBao() {
+    this.serviceHttp.getAllThongBao().subscribe((data) => {
+      this.thongbao = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
+  }
+
+  formatDate(date:string) {
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    return [day, month, year].join('-');
   }
 }

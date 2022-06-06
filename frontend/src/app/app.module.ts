@@ -22,6 +22,8 @@ import { SinhvienComponent } from './modules/core/component/admin/sinhvien/sinhv
 import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-form/sinhvien-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-form/taikhoan-form.component';
+import { ThongbaoComponent } from './modules/core/component/admin/thongbao/thongbao.component';
+import { ThongbaoFormComponent } from './modules/core/component/admin/thongbao-form/thongbao-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,8 @@ import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-f
     SinhvienComponent,
     SinhvienFormComponent,
     TaikhoanFormComponent,
+    ThongbaoComponent,
+    ThongbaoFormComponent,
   ],
   imports: [
     BrowserModule,
