@@ -30,9 +30,8 @@ export class LoginComponent implements OnInit {
   onSubmitForm(): any {
     this.serviceHttp.postLogin(this.loginForm.value).subscribe(data => {
       if(data.status === 200) {
-        console.log(data);
         this.cookieService.set('token',data.token);
-        localStorage.setItem('nhanvien',JSON.stringify(data.data))
+        localStorage.setItem('data',JSON.stringify(data));
         this.router.navigate(['/admin'])
       }
     })

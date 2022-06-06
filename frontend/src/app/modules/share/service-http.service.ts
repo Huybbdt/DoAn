@@ -30,7 +30,7 @@ export class ServiceHttpService {
     return this.httpClient.post<any>(`${this.url}nhanvien/create`,nhanvien, this.httOptions);
   }
 
-  public getNhanVien(id: number): Observable<any> {
+  public getNhanVien(id: any): Observable<any> {
     return this.httpClient.get<any>(`${this.url}nhanvien/${id}`, this.httOptions);
   }
 

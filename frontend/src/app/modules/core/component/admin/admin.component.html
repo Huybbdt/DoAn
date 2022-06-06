@@ -25,7 +25,7 @@
     >
       <div class="app-header header-shadow">
         <div class="app-header__logo">
-          <div class="logo h5">Ban Quản lý</div>
+          <div class="logo h5">{{nhanvien.data.ChucVu =='admin' ? 'ADMIN' : 'Nhân Viên'}}</div>
           <div class="header__pane ml-auto">
             <div>
               <button
@@ -82,14 +82,14 @@
             <div class="header-btn-lg pr-0">
               <div class="widget-content p-0">
                 <div class="widget-content-wrapper">
-                  <div class="widget-content-left">
+                  <div class="widget-content-left mr-2">
                     <div class="btn-group">
                       <button (click)="dropdownMenu()" class="p-0 btn">
                         <img
                           width="42"
                           height="42"
                           class="rounded-circle"
-                          src="https://cdn.pixabay.com/photo/2022/03/30/14/55/holiday-home-7101309_960_720.jpg"
+                          src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
                           alt=""
                         />
                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
@@ -106,22 +106,14 @@
                           tabindex="0"
                           class="dropdown-item"
                         >
-                          User Account
+                        Thông tin tài khoản
                         </button>
                         <button
                           type="button"
                           tabindex="0"
                           class="dropdown-item"
                         >
-                          Settings
-                        </button>
-                        <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                        <button
-                          type="button"
-                          tabindex="0"
-                          class="dropdown-item"
-                        >
-                          Actions
+                          Cài đặt
                         </button>
                         <div tabindex="-1" class="dropdown-divider"></div>
                         <button
@@ -135,18 +127,18 @@
                       </div>
                     </div>
                   </div>
-                  <div class="widget-content-left ml-3 header-user-info">
-                    <div class="widget-heading">Alina Mclourd</div>
-                    <div class="widget-subheading">VP People Manager</div>
+                  <div class="widget-content-left ml-3  mr-4 header-user-info">
+                    <div class="widget-heading">{{nhanvien.data.HoTen}}</div>
+                    <div class="widget-subheading">{{nhanvien.data.ChucVu}}</div>
                   </div>
-                  <div class="widget-content-right header-user-info ml-3">
+                  <!-- <div class="widget-content-right header-user-info ml-3">
                     <button
                       type="button"
                       class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example"
                     >
                       <i class="fa text-white fa-calendar pr-1 pl-1"></i>
                     </button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
