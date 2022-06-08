@@ -4,14 +4,17 @@ import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
 
 @Component({
-  selector: 'app-thongbao',
-  templateUrl: './thongbao.component.html',
-  styleUrls: ['./thongbao.component.scss']
+  selector: 'app-bienlaithutien',
+  templateUrl: './bienlaithutien.component.html',
+  styleUrls: ['./bienlaithutien.component.scss']
 })
-export class ThongbaoComponent implements OnInit {
+export class BienlaithutienComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  thongbao: any = [];
+  bienlaithutien: any = [];
+  nhanvien:any;
+  sinhvien:any;
   constructor(
     private serviceHttp: ServiceHttpService,
     private modalService: NgbModal,
@@ -40,18 +43,22 @@ export class ThongbaoComponent implements OnInit {
       },
     }
     };
-
-    this. getListThongBao();
-
+    this. getListBienLaiThuTien();
+    this.serviceHttp.getAllSinhVien().subscribe((data) => {
+      this.sinhvien = data.data;
+    });
+    this.serviceHttp.getAllNhanVien().subscribe((data) => {
+      this.nhanvien = data.data;
+    });
   }
-  deleteThongBao(thongbaoID: any,modal:any) {
-    this.serviceHttp.deleteThongBao(thongbaoID).subscribe((data) => {
+  deleteBienLaiThuTien(bienlaithutienID: any,modal:any) {
+    this.serviceHttp.deleteBienLaiThuTien(bienlaithutienID).subscribe((data) => {
       if(data.message == 'success') {
         this.open(modal);
       }
     });
-    this.serviceHttp.getAllThongBao().subscribe((data) => {
-      this.thongbao = data.data;
+    this.serviceHttp.getAllBienLaiThuTien().subscribe((data) => {
+      this.bienlaithutien = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
   }
@@ -62,9 +69,9 @@ export class ThongbaoComponent implements OnInit {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  getListThongBao() {
-    this.serviceHttp.getAllThongBao().subscribe((data) => {
-      this.thongbao = data.data;
+  getListBienLaiThuTien() {
+    this.serviceHttp.getAllBienLaiThuTien().subscribe((data) => {
+      this.bienlaithutien = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
   }
@@ -74,11 +81,11 @@ export class ThongbaoComponent implements OnInit {
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-
     if (month.length < 2)
         month = '0' + month;
     if (day.length < 2)
         day = '0' + day;
-    return [day, month, year].join('-');
+    return [day, month, year].join('-') + ' ' + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
   }
+
 }

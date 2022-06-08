@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ServiceHttpService {
-
+ reload: number ;
   private url = 'http://127.0.0.1:3000/'
   constructor(private httpClient: HttpClient) {}
   private httOptions ={
@@ -118,5 +118,23 @@ export class ServiceHttpService {
   }
   public deleteThongBao(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.url}thongbao/delete/${id}`, this.httOptions);
+  }
+  // Biên lai thu tiền
+  public getAllBienLaiThuTien(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}bienlaithutien`, this.httOptions);
+  }
+  public createBienLaiThuTien(bienlaithutien: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}bienlaithutien/create`,bienlaithutien, this.httOptions);
+  }
+
+  public getBienLaiThuTien(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}bienlaithutien/${id}`, this.httOptions);
+  }
+
+  public updateBienLaiThuTien(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}bienlaithutien/edit/${id}`,data, this.httOptions);
+  }
+  public deleteBienLaiThuTien(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}bienlaithutien/delete/${id}`, this.httOptions);
   }
 }

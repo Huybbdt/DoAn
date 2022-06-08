@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
   data: any;
   loginForm: FormGroup;
+  message: any;
   constructor(private cookieService: CookieService,private serviceHttp: ServiceHttpService,
     private formBuilder: FormBuilder,private router: Router,) {
 
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('token',data.token);
         localStorage.setItem('data',JSON.stringify(data));
         this.router.navigate(['/admin'])
+      } else {
+        this.message = data.message;
       }
     })
   }

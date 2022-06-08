@@ -1,0 +1,92 @@
+<div class="container-form" >
+  <form  *ngIf="bienlaithutienForm"  [formGroup]="bienlaithutienForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Sinh viên: </label>
+      <div *ngFor="let itemSV of listSinhVien" [class]="itemSV._id == bienlaithutienForm.value.SinhVienID ? 'col-sm-10': 'd-none'">
+        <ng-select  *ngIf="!isDisabledEdit" [items]="listSinhVien"
+        bindLabel="HoTen"
+        bindValue="_id"
+        placeholder="Chọn sinh viên"
+        [(ngModel)]="selectedSinhVien" [ngModelOptions]="{standalone: true}">
+        </ng-select>
+        <input type="text" *ngIf="isDisabledEdit && itemSV._id == bienlaithutienForm.value.SinhVienID"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" value="{{itemSV.HoTen | currency: 'VND' :true}}" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Học Kỳ: </label>
+      <div class="col-sm-10">
+        <select  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HocKy">
+          <option [value]=1>1</option>
+          <option [value]=2>2</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Năm Học: </label>
+      <div class="col-sm-10">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="2022"  maxlength="2099"formControlName="NamHoc"  placeholder=" {{isDisabledEdit ? '': 'Nhập năm học'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tổng Tiền: </label>
+      <div class="col-sm-10">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="TongTien"  placeholder=" {{isDisabledEdit ? '': 'Nhập Tổng tiền'}}">
+      </div>
+    </div>
+    <div  *ngIf="isDisabledEdit" class="form-group row">
+      <label class="col-sm-2 col-form-label">Ngày Lập: </label>
+      <div class="col-sm-10">
+        <input type="date" *ngIf="!isDisabledEdit"  Class="form-control" formControlName="NgayLap" >
+        <input *ngIf="isDisabledEdit"  [attr.disabled]="isDisabledEdit ? '': null" Class="form-control" value="{{ formatDate(bienlaithutienForm.value.NgayLap) }}">
+      </div>
+    </div>
+    <div  *ngIf="isDisabledEdit" class="form-group row">
+      <label class="col-sm-2 col-form-label">Người Lập: </label>
+      <div *ngFor="let itemNV of listNhanVien" class="col-sm-10">
+        <input type="text"  *ngIf="isDisabledEdit && itemNV._id == bienlaithutienForm.value.NhanVienID" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" value="{{itemNV.HoTen}}">
+      </div>
+    </div>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/admin/bienlaithutien']" class="btn btn-secondary">Trở về</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(created)"  class="btn-wide btn btn-success">Tạo Biên lai</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(confirm)"  class="btn-wide btn btn-success">Cập nhật Biên lai</button>
+    </div>
+    <ng-template #confirm let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắn chắn muôn cập nhật Biên lai?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+        <button type="button" class="btn btn-warning" (click)="onSubmitForm(created)" (click)="c('Save click')">Cập nhật</button>
+        <ng-template #content2 let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+          </div>
+          <div class="modal-body">
+            <p>Bạn đã cập nhật Biên lai thành công</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template #created let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn đã tạo mới Biên lai thành công</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+      </div>
+    </ng-template>
+  </form>
+</div>
+
+
+

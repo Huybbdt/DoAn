@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of phong; index as i">
+      <tr *ngFor="let item of phong.reverse(); index as i">
         <td>{{ i + 1 }}</td>
         <td>{{ item.TenPhong }}</td>
         <td >{{ coverIDKhuToName(item.KhuID)}}</td>

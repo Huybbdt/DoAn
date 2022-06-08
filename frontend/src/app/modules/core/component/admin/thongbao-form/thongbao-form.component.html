@@ -16,7 +16,9 @@
       <label class="col-sm-2 col-form-label">Ảnh: </label>
       <div class="col-sm-10">
         <input *ngIf="!isDisabledEdit" type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Anh"  placeholder=" {{isDisabledEdit ? '': 'Nhập link ảnh'}}">
+        <img  width="100px" class="rounded float-left mt-4"  *ngIf="thongbaoForm.value.Anh" src="{{thongbaoForm.value.Anh}}" alt="Ảnh">
         <img  width="100px" class="rounded float-left"  *ngIf="isDisabledEdit" src="{{thongbaoForm.value.Anh}}" alt="Ảnh">
+
       </div>
     </div>
     <div  *ngIf="isDisabledEdit" class="form-group row">

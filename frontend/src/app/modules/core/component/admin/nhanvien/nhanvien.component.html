@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of nhanvien; index as i">
+      <tr *ngFor="let person of nhanvien.reverse(); index as i">
         <td>{{ i + 1 }}</td>
         <td>{{ person.HoTen }}</td>
         <td>{{ person.GioiTinh == true ? "Nam" : "Nữ" }}</td>

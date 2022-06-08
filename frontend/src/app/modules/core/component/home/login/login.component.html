@@ -15,6 +15,9 @@
         <label for="inputPassword">Mật Khẩu</label>
         <input type="password"   formControlName="MatKhau" id="inputPassword" class="form-control" placeholder="Mật Khẩu"  name="password"  autocomplete="on">
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" style="border-radius: 10px">Đăng Nhập</button>
+      <label *ngIf="message" class="form-check-label text-danger mb-4" >
+        {{message}}
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="loginForm.invalid" type="submit" style="border-radius: 10px">Đăng Nhập</button>
     </form>
 </div>

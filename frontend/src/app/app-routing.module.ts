@@ -16,6 +16,8 @@ import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-f
 import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-form/taikhoan-form.component';
 import { ThongbaoComponent } from './modules/core/component/admin/thongbao/thongbao.component';
 import { ThongbaoFormComponent } from './modules/core/component/admin/thongbao-form/thongbao-form.component';
+import { BienlaithutienComponent } from './modules/core/component/admin/bienlaithutien/bienlaithutien.component';
+import { BienlaithutienFormComponent } from './modules/core/component/admin/bienlaithutien-form/bienlaithutien-form.component';
 
 const routes: Routes = [
   {
@@ -62,6 +64,13 @@ const routes: Routes = [
       }, {
         path: 'thongbao/:active/:id',
         component: ThongbaoFormComponent,
+      },
+      {
+        path: 'bienlaithutien',
+        component: BienlaithutienComponent,
+      }, {
+        path: 'bienlaithutien/:active/:id',
+        component: BienlaithutienFormComponent,
       },
     ],
   },
