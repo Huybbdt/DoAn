@@ -52,6 +52,7 @@ export class ThongbaoComponent implements OnInit {
     });
     this.serviceHttp.getAllThongBao().subscribe((data) => {
       this.thongbao = data.data;
+      $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
     });
   }

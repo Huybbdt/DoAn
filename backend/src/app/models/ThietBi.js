@@ -2,13 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ThietBi = new Schema({
-    phongID: {
+    PhongID: {
       type: Schema.Types.ObjectId,
       ref: "Phong",
     },
-    TenTB: { type: String, require: true},
-    SoLuong: { type: Number, require: true,default: 1},
-    TinhTrang: { type: String, require: true,default: "Còn sử Dụng Được"},
+    TenThietBi: { type: String, require: true},
+    SoLuong: { type: Number,default: 1},
     MoTa: { type: String},
   
    

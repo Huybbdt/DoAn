@@ -40,15 +40,24 @@ export class BienlaithutienFormComponent implements OnInit {
       this.listSinhVien = data.data;
       this.selectedSinhVien = this.listSinhVien[0]['_id'];
     });
-    this.serviceHttp.getAllNhanVien().subscribe((data:any) => {
-      this.listNhanVien = data.data;
-    });
     if (this.params['active'] === 'create') {
         this.createBienLaiThuTienForm();
     }else {
       this.serviceHttp.getBienLaiThuTien(this.params['id']).subscribe((data) => {
-        this.formData = {...data.data, NgayLap: this.formatDate(data.data.NgayLap)};
-        this.createBienLaiThuTienForm(this.formData);
+        if(this.params['active'] === 'details') {
+          this.listSinhVien.forEach((item:any) => {
+             if(data.data.SinhVienID == item._id) {
+              this.serviceHttp.getNhanVien(data.data.NhanVienID).subscribe((itemNhanVien:any) => {
+                console.log(itemNhanVien);
+                this.formData = {...data.data, NgayLap: this.formatDate(data.data.NgayLap),SinhVienID:item.HoTen,NhanVienID:itemNhanVien.data.HoTen};
+                this.createBienLaiThuTienForm(this.formData);
+              });
+            }
+          });
+        }else {
+          this.formData = {...data.data, NgayLap: this.formatDate(data.data.NgayLap)};
+          this.createBienLaiThuTienForm(this.formData);
+        }
       });
       if(this.params['active'] === 'details') {
         this.isDisabledEdit = true;

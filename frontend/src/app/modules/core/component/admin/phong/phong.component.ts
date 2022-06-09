@@ -57,6 +57,7 @@ export class PhongComponent implements OnInit {
     });
     this.serviceHttp.getAllPhong().subscribe((data) => {
       this.phong = data.data;
+      $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
     });
   }

@@ -1,21 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { HttpParams } from '@angular/common/http';
-declare const $: any;
+
 @Component({
-  selector: 'app-nhanvien',
-  templateUrl: './nhanvien.component.html',
-  styleUrls: ['./nhanvien.component.scss'],
+  selector: 'app-thietbi',
+  templateUrl: './thietbi.component.html',
+  styleUrls: ['./thietbi.component.scss']
 })
-export class NhanvienComponent implements OnInit, OnDestroy {
+export class ThietbiComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  nhanvien: any = [];
-  textBtn:any = '';
-  message:any = '';
-  taikhoan:any;
+  thietbi: any = [];
+  nhanvien:any;
+  Phong:any;
   constructor(
     private serviceHttp: ServiceHttpService,
     private modalService: NgbModal,
@@ -28,6 +27,7 @@ export class NhanvienComponent implements OnInit, OnDestroy {
     pagingType: 'full_numbers',
     pageLength: 10,
     processing: true,
+    info: false,
     language : {
       "zeroRecords": "Không tìm thấy kết quả",
       "search":         "Tìm kiếm: ",
@@ -43,27 +43,35 @@ export class NhanvienComponent implements OnInit, OnDestroy {
         "previous": "Trước"
       },
     }
-  };
-  this.getListNhanVien();
+    };
+    this.serviceHttp.getAllPhong().subscribe((data) => {
+      this.Phong = data.data;
+    });
+    this.getListThietBi();
   }
-  deleteNhanVien(nhanvienID: any,modal:any) {
-    this.serviceHttp.deleteNhanVien(nhanvienID).subscribe((data) => {
+  deleteThietBi(thietbiID: any,modal:any) {
+    this.serviceHttp.deleteThietBi(thietbiID).subscribe((data) => {
       if(data.message == 'success') {
         this.open(modal);
-        $('#datatables').DataTable().destroy();
-        this.getListNhanVien();
       }
     });
+    this.serviceHttp.getAllThietBi().subscribe((data) => {
+      this.thietbi = data.data;
+      $('#datatables').DataTable().destroy();
+      this.dtTrigger.next(this.dtOptions);
+    });
+
   }
+
   open(modal:any) {
     this.modalService.open(modal);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  getListNhanVien() {
-    this.serviceHttp.getAllNhanVien().subscribe((data) => {
-      this.nhanvien = data.data;
+  getListThietBi() {
+    this.serviceHttp.getAllThietBi().subscribe((data) => {
+      this.thietbi = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
   }

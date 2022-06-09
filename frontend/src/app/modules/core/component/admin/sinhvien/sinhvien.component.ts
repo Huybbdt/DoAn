@@ -44,8 +44,6 @@ export class SinhvienComponent implements OnInit {
     };
     this.serviceHttp.getAllSinhVien().subscribe((data) => {
       this.sinhvien = data.data;
-      console.log(this.sinhvien);
-
       this.dtTrigger.next(this.dtOptions);
     });
   }
@@ -56,6 +54,7 @@ export class SinhvienComponent implements OnInit {
         this.open(modal);
         this.serviceHttp.getAllSinhVien().subscribe((data) => {
           this.sinhvien = data.data;
+          $('#datatables').DataTable().destroy();
           this.dtTrigger.next(this.dtOptions);
         });
       }

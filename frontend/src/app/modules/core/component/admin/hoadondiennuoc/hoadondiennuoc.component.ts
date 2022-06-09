@@ -4,17 +4,16 @@ import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
 
 @Component({
-  selector: 'app-bienlaithutien',
-  templateUrl: './bienlaithutien.component.html',
-  styleUrls: ['./bienlaithutien.component.scss']
+  selector: 'app-hoadondiennuoc',
+  templateUrl: './hoadondiennuoc.component.html',
+  styleUrls: ['./hoadondiennuoc.component.scss']
 })
-export class BienlaithutienComponent implements OnInit {
-
+export class HoadondiennuocComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  bienlaithutien: any = [];
+  hoadondiennuoc: any = [];
   nhanvien:any;
-  sinhvien:any;
+  Phong:any;
   constructor(
     private serviceHttp: ServiceHttpService,
     private modalService: NgbModal,
@@ -43,22 +42,22 @@ export class BienlaithutienComponent implements OnInit {
       },
     }
     };
-    this. getListBienLaiThuTien();
-    this.serviceHttp.getAllSinhVien().subscribe((data) => {
-      this.sinhvien = data.data;
+    this. getListHoaDonDienNuoc();
+    this.serviceHttp.getAllPhong().subscribe((data) => {
+      this.Phong = data.data;
     });
     this.serviceHttp.getAllNhanVien().subscribe((data) => {
       this.nhanvien = data.data;
     });
   }
-  deleteBienLaiThuTien(bienlaithutienID: any,modal:any) {
-    this.serviceHttp.deleteBienLaiThuTien(bienlaithutienID).subscribe((data) => {
+  deleteHoaDonDienNuoc(hoadondiennuocID: any,modal:any) {
+    this.serviceHttp.deleteHoaDonDienNuoc(hoadondiennuocID).subscribe((data) => {
       if(data.message == 'success') {
         this.open(modal);
       }
     });
-    this.serviceHttp.getAllBienLaiThuTien().subscribe((data) => {
-      this.bienlaithutien = data.data;
+    this.serviceHttp.getAllHoaDonDienNuoc().subscribe((data) => {
+      this.hoadondiennuoc = data.data;
       $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
     });
@@ -70,9 +69,9 @@ export class BienlaithutienComponent implements OnInit {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  getListBienLaiThuTien() {
-    this.serviceHttp.getAllBienLaiThuTien().subscribe((data) => {
-      this.bienlaithutien = data.data;
+  getListHoaDonDienNuoc() {
+    this.serviceHttp.getAllHoaDonDienNuoc().subscribe((data) => {
+      this.hoadondiennuoc = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
   }

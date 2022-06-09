@@ -18,6 +18,10 @@ import { ThongbaoComponent } from './modules/core/component/admin/thongbao/thong
 import { ThongbaoFormComponent } from './modules/core/component/admin/thongbao-form/thongbao-form.component';
 import { BienlaithutienComponent } from './modules/core/component/admin/bienlaithutien/bienlaithutien.component';
 import { BienlaithutienFormComponent } from './modules/core/component/admin/bienlaithutien-form/bienlaithutien-form.component';
+import { HoadondiennuocComponent } from './modules/core/component/admin/hoadondiennuoc/hoadondiennuoc.component';
+import { HoadondiennuocFormComponent } from './modules/core/component/admin/hoadondiennuoc-form/hoadondiennuoc-form.component';
+import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi.component';
+import { ThietbiFormComponent } from './modules/core/component/admin/thietbi-form/thietbi-form.component';
 
 const routes: Routes = [
   {
@@ -71,6 +75,20 @@ const routes: Routes = [
       }, {
         path: 'bienlaithutien/:active/:id',
         component: BienlaithutienFormComponent,
+      },
+      {
+        path: 'hoadondiennuoc',
+        component: HoadondiennuocComponent,
+      }, {
+        path: 'hoadondiennuoc/:active/:id',
+        component: HoadondiennuocFormComponent,
+      },
+      {
+        path: 'thietbi',
+        component: ThietbiComponent,
+      }, {
+        path: 'thietbi/:active/:id',
+        component: ThietbiFormComponent,
       },
     ],
   },

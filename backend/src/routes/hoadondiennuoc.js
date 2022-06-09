@@ -5,5 +5,5 @@ router.get('/', hoadondiennuocController.getAllHoaDonDienNuoc);
 router.get('/:id', hoadondiennuocController.getHoaDonDienNuoc);
 router.post('/create', hoadondiennuocController.createHoaDonDienNuoc);
 router.put('/edit/:id', hoadondiennuocController.editHoaDonDienNuoc);
-router.delete('/delete/:id', hoadondiennuocController.editHoaDonDienNuoc);
+router.delete('/delete/:id', hoadondiennuocController.deleteHoaDonDienNuoc);
 module.exports = router;

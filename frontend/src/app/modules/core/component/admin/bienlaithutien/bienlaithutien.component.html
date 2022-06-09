@@ -24,7 +24,7 @@
       <tr *ngFor="let item of bienlaithutien.reverse(); index as i">
         <td>{{ i + 1 }}</td>
         <td >
-          <div *ngFor="let itemSV of this.sinhvien">
+          <div *ngFor="let itemSV of sinhvien">
             <div *ngIf="itemSV._id == item.SinhVienID">
               {{itemSV.HoTen}}
             </div>
@@ -54,7 +54,7 @@
           >
             Edit
           </button>
-          <button (click)="open(confirm)"  class="btn-icon btn-icon-only btn btn-outline-danger">
+          <button (click)="open(confirm)"  class="btn-icon btn-icon-only btn-sm btn btn-outline-danger">
             <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
           </button>
           <ng-template #confirm let-c="close" let-d="dismiss">

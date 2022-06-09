@@ -1,0 +1,111 @@
+<div class="container-form" >
+  <form  *ngIf="hoadondiennuocForm"  [formGroup]="hoadondiennuocForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phòng: </label>
+      <div class="col-sm-10" >
+        <ng-select  *ngIf="!isDisabledEdit" [items]="listPhong"
+        bindLabel="TenPhong"
+        bindValue="_id"
+        placeholder="Chọn phòng"
+        [(ngModel)]="selectedPhong" [ngModelOptions]="{standalone: true}">
+        </ng-select>
+        <input type="text" *ngIf="isDisabledEdit"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="PhongID">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên người nộp: </label>
+      <div class="col-sm-10">
+        <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTenNguoiNop">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Chỉ số điện đầu: </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0"  formControlName="ChiSoDienDauKy">
+      </div>
+      <label class="col-sm-2 col-form-label">Chỉ số điện cuối: </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0" formControlName="ChiSoDienCuoiKy">
+      </div>
+      <label class="col-sm-2 col-form-label">Đơn giá điên (x1000đ): </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0"  formControlName="DonGiaDien">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Chỉ số nước đầu: </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0"  formControlName="ChiSoNuocDauKy">
+      </div>
+      <label class="col-sm-2 col-form-label">Chỉ số nước cuối: </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0" formControlName="ChiSoNuocCuoiKy">
+      </div>
+      <label class="col-sm-2 col-form-label">Đơn giá nước (x1000đ): </label>
+      <div class="col-sm-2">
+      <input type="number"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"  min="0"  formControlName="DonGiaNuoc" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tổng tiền (x1000đ): </label>
+      <div class="col-sm-10">
+      <input type="number"   readonly [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="TongTien" >
+      </div>
+    </div>
+    <div  *ngIf="isDisabledEdit" class="form-group row">
+      <label class="col-sm-2 col-form-label">Ngày Lập: </label>
+      <div class="col-sm-10">
+        <input type="date" *ngIf="!isDisabledEdit"  Class="form-control" formControlName="NgayLap" >
+        <input *ngIf="isDisabledEdit"  [attr.disabled]="isDisabledEdit ? '': null" Class="form-control" value="{{ formatDate(hoadondiennuocForm.value.NgayLap) }}">
+      </div>
+    </div>
+    <div  *ngIf="isDisabledEdit" class="form-group row">
+      <label class="col-sm-2 col-form-label">Người Lập: </label>
+      <div  class="col-sm-10">
+        <input type="text"  *ngIf="isDisabledEdit" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="NhanVienID">
+      </div>
+    </div>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/admin/hoadondiennuoc']" class="btn btn-secondary">Trở về</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(created)"  class="btn-wide btn btn-success">Tạo hóa đơn điện nước</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(confirm)"  class="btn-wide btn btn-success">Cập nhật hóa đơn điện nước</button>
+    </div>
+    <ng-template #confirm let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắn chắn muôn cập nhật hóa đơn điện nước?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+        <button type="button" class="btn btn-warning" (click)="onSubmitForm(created)" (click)="c('Save click')">Cập nhật</button>
+        <ng-template #content2 let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+          </div>
+          <div class="modal-body">
+            <p>Bạn đã cập nhật hóa đơn điện nước thành công</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template #created let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn đã tạo mới hóa đơn điện nước thành công</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+      </div>
+    </ng-template>
+  </form>
+</div>
+
+
+

@@ -26,6 +26,10 @@ import { ThongbaoComponent } from './modules/core/component/admin/thongbao/thong
 import { ThongbaoFormComponent } from './modules/core/component/admin/thongbao-form/thongbao-form.component';
 import { BienlaithutienComponent } from './modules/core/component/admin/bienlaithutien/bienlaithutien.component';
 import { BienlaithutienFormComponent } from './modules/core/component/admin/bienlaithutien-form/bienlaithutien-form.component';
+import { HoadondiennuocComponent } from './modules/core/component/admin/hoadondiennuoc/hoadondiennuoc.component';
+import { HoadondiennuocFormComponent } from './modules/core/component/admin/hoadondiennuoc-form/hoadondiennuoc-form.component';
+import { ThietbiFormComponent } from './modules/core/component/admin/thietbi-form/thietbi-form.component';
+import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +49,10 @@ import { BienlaithutienFormComponent } from './modules/core/component/admin/bien
     ThongbaoFormComponent,
     BienlaithutienComponent,
     BienlaithutienFormComponent,
+    HoadondiennuocComponent,
+    HoadondiennuocFormComponent,
+    ThietbiFormComponent,
+    ThietbiComponent,
   ],
   imports: [
     BrowserModule,

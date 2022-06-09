@@ -137,4 +137,41 @@ export class ServiceHttpService {
   public deleteBienLaiThuTien(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.url}bienlaithutien/delete/${id}`, this.httOptions);
   }
+
+  // Biên lai thu tiền
+  public getAllHoaDonDienNuoc(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}hoadondiennuoc`, this.httOptions);
+  }
+  public createHoaDonDienNuoc(hoadondiennuoc: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}hoadondiennuoc/create`,hoadondiennuoc, this.httOptions);
+  }
+
+  public getHoaDonDienNuoc(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}hoadondiennuoc/${id}`, this.httOptions);
+  }
+
+  public updateHoaDonDienNuoc(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}hoadondiennuoc/edit/${id}`,data, this.httOptions);
+  }
+  public deleteHoaDonDienNuoc(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}hoadondiennuoc/delete/${id}`, this.httOptions);
+  }
+  // thiết bị
+  public getAllThietBi(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}thietbi`, this.httOptions);
+  }
+  public createThietBi(thietbi: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.url}thietbi/create`,thietbi, this.httOptions);
+  }
+
+  public getThietBi(id: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}thietbi/${id}`, this.httOptions);
+  }
+
+  public updateThietBi(data:any,id: number): Observable<any> {
+    return this.httpClient.put<any>(`${this.url}thietbi/edit/${id}`,data, this.httOptions);
+  }
+  public deleteThietBi(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.url}thietbi/delete/${id}`, this.httOptions);
+  }
 }
