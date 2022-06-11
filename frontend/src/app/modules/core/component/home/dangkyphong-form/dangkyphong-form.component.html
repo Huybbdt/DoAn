@@ -1,0 +1,180 @@
+<div class="container-form" >
+  <form  *ngIf="sinhVienForm"  [formGroup]="sinhVienForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên: </label>
+      <div class="col-sm-10">
+        <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTen"  placeholder=" {{isDisabledEdit ? '': 'Nhập Họ và tên'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.HoTen"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('HoTen')?.hasError(validation.type) &&
+            (sinhVienForm.get('HoTen')?.dirty ||
+            sinhVienForm.get('HoTen')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Giới tính: </label>
+      <div class="col-sm-10">
+        <select  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="GioiTinh">
+          <option [value]=true>Nam</option>
+          <option [value]=false>Nữ</option>
+        </select>
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.GioiTinh"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('GioiTinh')?.hasError(validation.type) &&
+            (sinhVienForm.get('GioiTinh')?.dirty ||
+            sinhVienForm.get('GioiTinh')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Ngày sinh: </label>
+      <div class="col-sm-10">
+      <input type="date"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="NgaySinh" id="birthday" name="birthday">
+      <div
+      *ngFor="let validation of sinhvien_validation_messages.NgaySinh"
+    >
+      <span
+        class="col-auto invalid-feedback"
+        *ngIf="
+        sinhVienForm.get('NgaySinh')?.hasError(validation.type) &&
+          (sinhVienForm.get('NgaySinh')?.dirty ||
+          sinhVienForm.get('NgaySinh')?.touched ||
+            isSubmited)
+        "
+        >{{ validation.message }}</span
+      >
+    </div>
+    </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDT"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">CMND: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="CMND"  placeholder="{{isDisabledEdit ? '': 'Nhập CMND'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Nơi cấp: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="NoiCap"  placeholder="{{isDisabledEdit ? '': 'Nhập Nơi cấp'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Dân tộc: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DanToc"  placeholder="{{isDisabledEdit ? '': 'Nhập Dân tộc'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tôn giáo: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="TonGiao"  placeholder="{{isDisabledEdit ? '': 'Nhập Tôn giáo'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Mã sinh viên: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="MaSV"  placeholder="{{isDisabledEdit ? '': 'Nhập Mã sinh viên'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Lớp: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Lop"  placeholder="{{isDisabledEdit ? '': 'Nhập Lớp'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Khoa: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Khoa"  placeholder="{{isDisabledEdit ? '': 'Nhập Khoa'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Trường: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Truong"  placeholder="{{isDisabledEdit ? '': 'Nhập Trường'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DiaChi"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa chỉ'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên người thân: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTenNguoiThan"  placeholder="{{isDisabledEdit ? '': ' Nhập họ và tên người thân'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT người thân: </label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDTNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT người thân'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ người thân: </label>
+      <div class="col-sm-10">
+        <input  Class="form-control" formControlName="DiaChiNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa Chỉ Người Thân'}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phòng: </label>
+      <div class="col-sm-10">
+        <input  Class="form-control" value="{{phongName}}" disabled placeholder="Nhập Địa Chỉ Người Thân">
+      </div>
+    </div>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/home/dangkyphong']" class="btn btn-secondary">Trở về</button>
+      <button type="submit"  (click)="oncheck(confirm)"  class="btn-wide btn btn-success">Đăng ký tạm trú</button>
+    </div>
+    <ng-template #confirm let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắn chắn muốn đăng ký tạm trú</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+        <button type="button"  class="btn btn-warning" (click)="onSubmitForm(created)" (click)="c('Save click')">Đăng ký</button>
+        <ng-template #created let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+          </div>
+          <div class="modal-body">
+            <p>Bạn đã Đăng ký tạm trú tại ký túc xá thành công</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </form>
+</div>
+

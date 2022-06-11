@@ -3,8 +3,12 @@ const router = express.Router();
 const sinhvienController = require('../app/controllers/SinhVien');
 
 router.get('/', sinhvienController.getAllSinhVien);
+router.get('/sinhviendango', sinhvienController.getSinhVienDangO);
+router.get('/sinhviendangchoduyet', sinhvienController.getSinhVienChoDuyet);
 router.get('/:id', sinhvienController.getSinhVien);
 router.post('/create', sinhvienController.createSinhVien);
 router.put('/edit/:id', sinhvienController.editSinhVien);
 router.delete('/delete/:id', sinhvienController.deleteSinhVien);
+
+
 module.exports = router;

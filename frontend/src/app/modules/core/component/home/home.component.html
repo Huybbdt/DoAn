@@ -11,25 +11,20 @@
           <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['nav-link-active']" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-house"></i> TRANG CHỦ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">GIỚI THIỆU</a>
+          <a class="nav-link"  [routerLink]="['/home/thongbao']" [routerLinkActive]="['nav-link-active']" [routerLinkActiveOptions]="{exact: true}">THÔNG BÁO</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <li class="nav-item dropdown" [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            BẢNG GIÁ
+            THÔNG TIN KTX
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">BẢNG GIÁ ĐIỆN NƯỚC</a>
-            <a class="dropdown-item " href="#">BẢNG GIÁ PHÒNG</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">HỒ SƠ ĐĂNG KÝ</a>
+            <a class="dropdown-item" [routerLink]="['/home/dangkyphong']"  [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">ĐĂNG KÝ TẠM TRÚ</a>
+            <a class="dropdown-item " [routerLink]="['/home/banggiadiennuoc']" [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">HÓA ĐƠN ĐIỆN NƯỚC</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="home">THÔNG BÁO</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">CHÍNH SÁCH</a>
+          <a class="nav-link" [routerLink]="['/home/noiquy']"  [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">NỘI QUY KÝ TÚC XÁ</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/home/login']" [routerLinkActive]="['nav-link-active']" [routerLinkActiveOptions]="{exact: true}">ĐĂNG NHẬP HỆ THỐNG</a>
@@ -75,9 +70,7 @@
   <div class="notify" style="margin: 10px 0; border: 3px solid #ccc;width:  100%;height: 60px;display: flex;align-items: center;">
     <marquee style="font-family:Book Antiqua; color: #3366ff" scrollamount="20">
     <ul style="padding: 0;margin: 0;display: flex;">
-        <li style="margin-left: 60px;"><span style="font-size: 1.4rem;font-weight: 700;">Thông báo thu tiền điện nước ( từ ngày 10/6 - 15/6)<img src="http://daotao.ute.udn.vn/iconnew.gif" ></span></li>
-        <li style="margin-left: 60px;"><span style="font-size: 1.4rem;font-weight: 700;">Thông báo dọn vệ sinh hàng tháng Khu A<img src="http://daotao.ute.udn.vn/iconnew.gif" ></span></li>
-        <li style="margin-left: 60px;"><span style="font-size: 1.4rem;font-weight: 700;">Thông báo dời lịch đóng của mỗi tối từ 22h chuyển thành 23h<img src="http://daotao.ute.udn.vn/iconnew.gif" ></span></li>
+        <li *ngFor="let item of thongbaolist?.reverse().slice(0, 5)" style="margin-left: 60px;"><a  style="text-decoration: none" [routerLink]="['/home/thongbao',item._id]"><span style="font-size: 1.4rem;font-weight: 700;">{{item.TieuDe}}<img src="http://daotao.ute.udn.vn/iconnew.gif" ></span></a></li>
       </ul>
     </marquee>
   </div>

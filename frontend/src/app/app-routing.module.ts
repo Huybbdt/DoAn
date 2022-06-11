@@ -22,6 +22,14 @@ import { HoadondiennuocComponent } from './modules/core/component/admin/hoadondi
 import { HoadondiennuocFormComponent } from './modules/core/component/admin/hoadondiennuoc-form/hoadondiennuoc-form.component';
 import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi.component';
 import { ThietbiFormComponent } from './modules/core/component/admin/thietbi-form/thietbi-form.component';
+import { ThongbaoListComponent } from './modules/core/component/home/thongbao-list/thongbao-list.component';
+import { ThongbaoDetailsComponent } from './modules/core/component/home/thongbao-details/thongbao-details.component';
+import { DangkyphongComponent } from './modules/core/component/home/dangkyphong/dangkyphong.component';
+import { DangkyphongFormComponent } from './modules/core/component/home/dangkyphong-form/dangkyphong-form.component';
+import { DuyetsinhvienComponent } from './modules/core/component/admin/duyetsinhvien/duyetsinhvien.component';
+import { BanggiadiennuocComponent } from './modules/core/component/home/banggiadiennuoc/banggiadiennuoc.component';
+import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
+
 
 const routes: Routes = [
   {
@@ -30,6 +38,28 @@ const routes: Routes = [
     children: [
       { path: '', component: HomePageComponent },
       { path: 'login', component: LoginComponent },
+      {
+        path: 'thongbao',
+        component: ThongbaoListComponent,
+      }, {
+        path: 'thongbao/:id',
+        component: ThongbaoDetailsComponent,
+      },
+      {
+        path: 'dangkyphong',
+        component: DangkyphongComponent,
+      }, {
+        path: 'dangkyphong/:id',
+        component: DangkyphongFormComponent,
+      },
+      {
+        path: 'banggiadiennuoc',
+        component: BanggiadiennuocComponent,
+      },
+      {
+        path: 'noiquy',
+        component: NoiquyComponent,
+      },
     ],
   },
   {
@@ -89,6 +119,10 @@ const routes: Routes = [
       }, {
         path: 'thietbi/:active/:id',
         component: ThietbiFormComponent,
+      },
+      {
+        path: 'duyetsinhvien',
+        component: DuyetsinhvienComponent,
       },
     ],
   },

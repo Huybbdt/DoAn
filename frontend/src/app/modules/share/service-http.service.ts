@@ -76,6 +76,12 @@ export class ServiceHttpService {
   public getSinhVien(id: number): Observable<any> {
     return this.httpClient.get<any>(`${this.url}sinhvien/${id}`, this.httOptions);
   }
+  public getSinhVienDangO(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}sinhvien/sinhviendango`, this.httOptions);
+  }
+  public getSinhVienChoDuyet(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}sinhvien/sinhviendangchoduyet`, this.httOptions);
+  }
 
   public updateSinhVien(data:any,id: number): Observable<any> {
     return this.httpClient.put<any>(`${this.url}sinhvien/edit/${id}`,data, this.httOptions);
@@ -155,6 +161,9 @@ export class ServiceHttpService {
   }
   public deleteHoaDonDienNuoc(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.url}hoadondiennuoc/delete/${id}`, this.httOptions);
+  }
+  public getHoaDonDienNuocChuaNop(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}hoadondiennuoc/chuanop`, this.httOptions);
   }
   // thiết bị
   public getAllThietBi(): Observable<any> {

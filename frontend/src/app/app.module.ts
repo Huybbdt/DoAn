@@ -30,6 +30,13 @@ import { HoadondiennuocComponent } from './modules/core/component/admin/hoadondi
 import { HoadondiennuocFormComponent } from './modules/core/component/admin/hoadondiennuoc-form/hoadondiennuoc-form.component';
 import { ThietbiFormComponent } from './modules/core/component/admin/thietbi-form/thietbi-form.component';
 import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi.component';
+import { DuyetsinhvienComponent } from './modules/core/component/admin/duyetsinhvien/duyetsinhvien.component';
+import { ThongbaoListComponent } from './modules/core/component/home/thongbao-list/thongbao-list.component';
+import { ThongbaoDetailsComponent } from './modules/core/component/home/thongbao-details/thongbao-details.component';
+import { DangkyphongComponent } from './modules/core/component/home/dangkyphong/dangkyphong.component';
+import { DangkyphongFormComponent } from './modules/core/component/home/dangkyphong-form/dangkyphong-form.component';
+import { BanggiadiennuocComponent } from './modules/core/component/home/banggiadiennuoc/banggiadiennuoc.component';
+import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +60,13 @@ import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi
     HoadondiennuocFormComponent,
     ThietbiFormComponent,
     ThietbiComponent,
+    DuyetsinhvienComponent,
+    ThongbaoListComponent,
+    ThongbaoDetailsComponent,
+    DangkyphongComponent,
+    DangkyphongFormComponent,
+    BanggiadiennuocComponent,
+    NoiquyComponent,
   ],
   imports: [
     BrowserModule,

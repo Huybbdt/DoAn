@@ -56,7 +56,30 @@ class NewController {
       res.status(500).json(error);
     }
   }
-
+  async getSinhVienDangO(req, res, next) {
+    try {
+      const data = await SinhVien.find();
+      const sinhvienDangO = data.filter((item)=> item.TrangThai == 'Đang ở');
+      res.status(201).json({
+        message: 'success',
+        data: sinhvienDangO,
+      });
+    } catch (error) {
+      res.json({ message: error });
+    }
+  }
+  async getSinhVienChoDuyet(req, res, next) {
+    try {
+      const data = await SinhVien.find();
+      const getSinhVienChoDuyet = data.filter((item)=> item.TrangThai == 'Đang chờ duyệt');
+      res.status(201).json({
+        message: 'success',
+        data: getSinhVienChoDuyet,
+      });
+    } catch (error) {
+      res.json({ message: error });
+    }
+  }
   async deleteSinhVien(req, res) {
     try {
       const data = await SinhVien.findByIdAndDelete({ _id: req.params.id });

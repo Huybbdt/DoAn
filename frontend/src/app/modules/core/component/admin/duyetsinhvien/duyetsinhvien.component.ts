@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
 
 @Component({
-  selector: 'app-sinhvien',
-  templateUrl: './sinhvien.component.html',
-  styleUrls: ['./sinhvien.component.scss'],
+  selector: 'app-duyetsinhvien',
+  templateUrl: './duyetsinhvien.component.html',
+  styleUrls: ['./duyetsinhvien.component.scss']
 })
-export class SinhvienComponent implements OnInit {
+export class DuyetsinhvienComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   sinhvien: any = [];
@@ -42,17 +42,18 @@ export class SinhvienComponent implements OnInit {
         },
       }
     };
-    this.serviceHttp.getSinhVienDangO().subscribe((data) => {
+    this.serviceHttp.getSinhVienChoDuyet().subscribe((data) => {
       this.sinhvien = data.data;
       this.dtTrigger.next(this.dtOptions);
     });
   }
   deleteSinhVien(sinhvienID: any, modal: any) {
+    this.message = 'Xóa'
     this.serviceHttp.deleteSinhVien(sinhvienID).subscribe((data) => {
       console.log(data.data);
-      if (data.message == 'success') {
+      if (data.message == 'success'){
         this.open(modal);
-        this.serviceHttp.getAllSinhVien().subscribe((data) => {
+        this.serviceHttp.getSinhVienChoDuyet().subscribe((data) => {
           this.sinhvien = data.data;
           $('#datatables').DataTable().destroy();
           this.dtTrigger.next(this.dtOptions);
@@ -60,10 +61,32 @@ export class SinhvienComponent implements OnInit {
       }
     });
   }
-  open(modal: any) {
+  duyetsinhvien(sinhvienID: any, modal: any) {
+    this.message = 'Duyệt'
+    this.serviceHttp.getSinhVien(sinhvienID).subscribe((data:any) => {
+      this.serviceHttp.updateSinhVien({...data.data,TrangThai: 'Đang ở'},sinhvienID).subscribe((item:any) => {
+        if (item.message == 'success') {
+          this.open(modal);
+          this.serviceHttp.getSinhVienChoDuyet().subscribe((data) => {
+            this.sinhvien = data.data;
+            $('#datatables').DataTable().destroy();
+            this.dtTrigger.next(this.dtOptions);
+          });
+        }
+      })
+    })
+  }
+  open(modal: any,message?: string) {
+    if(message == 'delete') {
+      this.message = 'Xóa'
+    }
+    if(message == 'duyet') {
+      this.message = 'Duyệt'
+    }
     this.modalService.open(modal);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
 }

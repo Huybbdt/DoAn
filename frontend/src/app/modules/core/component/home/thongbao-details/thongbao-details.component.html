@@ -1,0 +1,21 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/home/thongbao']">Thông Báo</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Chi Tiết Thông Báo</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col">
+    <div class="card mb-3">
+      <img *ngIf="thongbao.Anh"src="{{thongbao.Anh}}" class="card-img-top" alt="ảnh">
+      <img *ngIf="!thongbao.Anh"src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=" class="card-img-top" alt="ảnh">
+
+      <div class="card-body">
+        <h5 class="card-title">{{thongbao.TieuDe}}</h5>
+        <p class="card-text">{{thongbao.NoiDung}}</p>
+        <p class="card-text"><small class="text-muted">Cập nhật lúc {{formatDate(thongbao.NgayLap)}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
