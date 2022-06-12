@@ -1,3 +1,9 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item ">Đăng Nhập</li>
+  </ol>
+</nav>
 <div class='mt-4'>
   <form class="form-signin" method="post"  [formGroup]="loginForm"  (ngSubmit)="onSubmitForm()" style="border: 1px solid #ccc; padding: 20px;border-radius: 10px;">
       <div class="text-center mb-4">

@@ -1,14 +1,21 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a [routerLink]="['/Home']">Trang Chủ</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Thông Báo</li>
+    <li class="breadcrumb-item active"><a [routerLink]="['/Home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item " aria-current="page">Thông Báo</li>
   </ol>
 </nav>
-<div class="row">
+<div class="row thongbao">
+  <div class="blog-post">
+    <div class="blog-post-title" style="margin: 12px 0;text-align: center">
+      <h2 style="color: #ff6600; display: inline-block;">THÔNG BÁO</h2>
+      <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;"> KÝ TÚC XÁ</h2>
+    </div>
+    <hr />
+  </div>
   <div *ngFor="let thongbao of thongbaolist"class="col-md-4">
     <div class="card">
-      <a [routerLink]="[thongbao._id]"><img *ngIf="thongbao.Anh" src="{{thongbao.Anh}}" class="card-img-top" alt="ảnh" /></a>
-      <a [routerLink]="[thongbao._id]"><img *ngIf="!thongbao.Anh" src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=" class="card-img-top" alt="ảnh" /></a>
+      <a [routerLink]="[thongbao._id]"><img *ngIf="thongbao.Anh" src="{{thongbao.Anh}}" class="card-img-top thongbao-anh" alt="ảnh" /></a>
+      <a [routerLink]="[thongbao._id]"><img *ngIf="!thongbao.Anh" src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=" class="card-img-top thongbao-anh" alt="ảnh" /></a>
 
       <div class="card-body">
         <h3 class="card-title">{{thongbao.TieuDe | uppercase}}</h3>

@@ -20,7 +20,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['/home/dangkyphong']"  [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">ĐĂNG KÝ TẠM TRÚ</a>
-            <a class="dropdown-item " [routerLink]="['/home/banggiadiennuoc']" [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">HÓA ĐƠN ĐIỆN NƯỚC</a>
+            <a class="dropdown-item " [routerLink]="['/home/banggiadiennuoc']" [routerLinkActive]="['nav-link-active']"  [routerLinkActiveOptions]="{exact: true}">BẢNG GIÁ ĐIỆN NƯỚC</a>
           </div>
         </li>
         <li class="nav-item">
@@ -91,13 +91,12 @@
         </ul>
 
         <blockquote><p>
-          <span style="font-family: verdana, geneva, sans-serif;">Ở ghép: Tối đa 06 sinh viên/1 phòng (85.000đ/tháng/Sinh viên)</span></p>
-          <p><span style="font-family: verdana, geneva, sans-serif;">Bao phòng: Tối đa 05 sinh viên/ 1 phòng</span></p>
-          <p><span style="font-family: verdana, geneva, sans-serif;">Đóng phí theo kỳ, tối thiểu 3 tháng/kỳ</span>
+          <span style="font-family: verdana, geneva, sans-serif;">Ở ghép: Tối đa 08 sinh viên/1 phòng (120.000đ/tháng/Sinh viên)</span></p>
+          <p><span style="font-family: verdana, geneva, sans-serif;">Bao phòng: Tối đa 04 sinh viên/ 1 phòng</span></p>
+          <p><span style="font-family: verdana, geneva, sans-serif;">Đóng phí theo kỳ, tối thiểu 5 tháng/kỳ</span>
           </p>
         </blockquote>
-
-        <button style="width: 100%;background-color: #3366ff;border: none;border-radius: 10px;color: #fff;height: 40px;">Form đăng ký</button>
+        <button  [routerLink]="['/home/dangkyphong']" style="width: 100%;background-color: #3366ff;border: none;border-radius: 10px;color: #fff;height: 40px;">ĐĂNG KÝ TẠM TRÚ</button>
       </div>
       <div class="p-3">
         <h4 class="font-italic" style="background-color: #f3f3f3;color: #ff6600; text-align: center; border-radius:4px 4px 0 0 ;">Liên Kết</h4>
