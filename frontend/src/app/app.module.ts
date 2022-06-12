@@ -22,6 +22,21 @@ import { SinhvienComponent } from './modules/core/component/admin/sinhvien/sinhv
 import { SinhvienFormComponent } from './modules/core/component/admin/sinhvien-form/sinhvien-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-form/taikhoan-form.component';
+import { ThongbaoComponent } from './modules/core/component/admin/thongbao/thongbao.component';
+import { ThongbaoFormComponent } from './modules/core/component/admin/thongbao-form/thongbao-form.component';
+import { BienlaithutienComponent } from './modules/core/component/admin/bienlaithutien/bienlaithutien.component';
+import { BienlaithutienFormComponent } from './modules/core/component/admin/bienlaithutien-form/bienlaithutien-form.component';
+import { HoadondiennuocComponent } from './modules/core/component/admin/hoadondiennuoc/hoadondiennuoc.component';
+import { HoadondiennuocFormComponent } from './modules/core/component/admin/hoadondiennuoc-form/hoadondiennuoc-form.component';
+import { ThietbiFormComponent } from './modules/core/component/admin/thietbi-form/thietbi-form.component';
+import { ThietbiComponent } from './modules/core/component/admin/thietbi/thietbi.component';
+import { DuyetsinhvienComponent } from './modules/core/component/admin/duyetsinhvien/duyetsinhvien.component';
+import { ThongbaoListComponent } from './modules/core/component/home/thongbao-list/thongbao-list.component';
+import { ThongbaoDetailsComponent } from './modules/core/component/home/thongbao-details/thongbao-details.component';
+import { DangkyphongComponent } from './modules/core/component/home/dangkyphong/dangkyphong.component';
+import { DangkyphongFormComponent } from './modules/core/component/home/dangkyphong-form/dangkyphong-form.component';
+import { BanggiadiennuocComponent } from './modules/core/component/home/banggiadiennuoc/banggiadiennuoc.component';
+import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +52,21 @@ import { TaikhoanFormComponent } from './modules/core/component/admin/taikhoan-f
     SinhvienComponent,
     SinhvienFormComponent,
     TaikhoanFormComponent,
+    ThongbaoComponent,
+    ThongbaoFormComponent,
+    BienlaithutienComponent,
+    BienlaithutienFormComponent,
+    HoadondiennuocComponent,
+    HoadondiennuocFormComponent,
+    ThietbiFormComponent,
+    ThietbiComponent,
+    DuyetsinhvienComponent,
+    ThongbaoListComponent,
+    ThongbaoDetailsComponent,
+    DangkyphongComponent,
+    DangkyphongFormComponent,
+    BanggiadiennuocComponent,
+    NoiquyComponent,
   ],
   imports: [
     BrowserModule,

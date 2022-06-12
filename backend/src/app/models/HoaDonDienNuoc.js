@@ -15,7 +15,7 @@ const HoaDonDienNuoc = new Schema({
     ChiSoDienCuoiKy: {type: Number,require: true},
     DonGiaDien: {type: Number,require: true},
     ChiSoNuocDauKy: {type: Number,require: true},
-    ChiSoNuocDauKy: {type: Number,require: true},
+    ChiSoNuocCuoiKy: {type: Number,require: true},
     DonGiaNuoc: {type: Number,require: true},
     TongTien: { type: Number, require: true},
     NgayLap: { type: Date},

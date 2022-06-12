@@ -1,0 +1,70 @@
+<div class="container-form">
+  <table
+    datatable
+    id="datatables"
+    [dtOptions]="dtOptions"
+    [dtTrigger]="dtTrigger"
+    class="row-border hover"
+  >
+    <thead>
+      <tr>
+        <th class="table-title">STT</th>
+        <th class="table-title">Họ và tên</th>
+        <th class="table-title">Giới tính</th>
+        <th class="table-title">Ngày sinh</th>
+        <th class="table-title">Địa chỉ</th>
+        <th class="table-title">Trạng Thái</th>
+        <th class="table-title">Hoạt động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of sinhvien.reverse(); index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ person.HoTen }}</td>
+        <td>{{ person.GioiTinh == true ? "Nam" : "Nữ" }}</td>
+        <td>{{ person.NgaySinh | date: "dd/MM/yyyy" }}</td>
+        <td>{{ person.DiaChi }}</td>
+        <td>{{ person.TrangThai }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm mr-2"
+            (click)="open(comfirm,'duyet')"
+          >
+            Duyệt
+          </button>
+          <button (click)="open(comfirm,'delete')"  class="btn-icon btn-sm btn-icon-only  btn-sm btn btn-outline-danger">
+            <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
+          </button>
+          <ng-template #comfirm let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+
+            </div>
+            <div class="modal-body">
+              <p>Bạn có muốn {{message}} sinh viên: <strong>{{person.HoTen}}</strong></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+              <button *ngIf="message == 'Duyệt'" type="button" class="btn btn-danger" (click)="duyetsinhvien(person._id,deleted)" (click)="c('Save click')">{{message}}</button>
+              <button  *ngIf="message =='Xóa'" type="button" class="btn btn-danger" (click)="deleteSinhVien(person._id,deleted)" (click)="c('Save click')">{{message}}</button>
+              <ng-template #deleted let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Bạn đã <strong> {{person.HoTen}}</strong> {{message}}thành công</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+                </div>
+              </ng-template>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,3 +1,9 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item ">Đăng Nhập</li>
+  </ol>
+</nav>
 <div class='mt-4'>
   <form class="form-signin" method="post"  [formGroup]="loginForm"  (ngSubmit)="onSubmitForm()" style="border: 1px solid #ccc; padding: 20px;border-radius: 10px;">
       <div class="text-center mb-4">
@@ -5,7 +11,7 @@
           <h2 style="color: #ff6600; display: inline-block;">ĐĂNG</h2>
           <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;">NHẬP</h2>
         </h2>
-        <p>Chú ý: Ban quản lý ký túc xá bạn mới có quyền đăng nhập</p>
+        <p class="alert alert-danger"><strong style="color: red">chú ý</strong>: Ban quản lý ký túc xá bạn mới có quyền đăng nhập</p>
       </div>
       <div class="form-label-group">
         <label for="inputEmail">Email</label>
@@ -15,6 +21,9 @@
         <label for="inputPassword">Mật Khẩu</label>
         <input type="password"   formControlName="MatKhau" id="inputPassword" class="form-control" placeholder="Mật Khẩu"  name="password"  autocomplete="on">
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" style="border-radius: 10px">Đăng Nhập</button>
+      <label *ngIf="message" class="form-check-label text-danger mb-4" >
+        {{message}}
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="loginForm.invalid" type="submit" style="border-radius: 10px">Đăng Nhập</button>
     </form>
 </div>

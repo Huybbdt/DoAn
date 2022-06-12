@@ -15,8 +15,11 @@
         </button>
       </div>
     </div>
-    <button   *ngIf="this.isSave" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">Tạo tài khoản</button>
-    <button *ngIf="!this.isSave" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">cập nhật tài khoản</button>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/admin/nhanvien']" class="btn btn-secondary">Trở về</button>
+      <button *ngIf="this.isSave" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">Tạo tài khoản</button>
+      <button *ngIf="!this.isSave" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">cập nhật tài khoản</button>
+    </div>
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>

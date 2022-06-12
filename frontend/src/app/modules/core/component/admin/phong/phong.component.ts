@@ -23,29 +23,41 @@ export class PhongComponent implements OnInit {
 
   ngOnInit(): void {
    window.alert = function() {};
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      processing: true,
+   this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 10,
+    processing: true,
+    language : {
+      "zeroRecords": "Không tìm thấy kết quả",
+      "search":         "Tìm kiếm: ",
+      "emptyTable": "Không có dữ liệu",
+      "loadingRecords": "Đang tải...",
+      "info": "Hiển thị _START_ tới _END_ của _TOTAL_ dữ liệu",
+      "infoEmpty": "Hiển thị 0 tới 0 của 0 dữ liệu",
+      "lengthMenu": "Hiển thị _MENU_ dữ liệu",
+      "paginate": {
+        "first": "Đầu tiên",
+        "last": "Cuối cùng",
+        "next": "Sau",
+        "previous": "Trước"
+      },
+    }
     };
     this.serviceHttp.getAllKhu().subscribe((data) => {
       this.khu = data.data;
     });
-    this.serviceHttp.getAllPhong().subscribe((data) => {
-      this.phong = data.data;
-      this.dtTrigger.next(this.dtOptions);
-    });
+    this. getListPhong();
+
   }
   deletePhong(phongID: any,modal:any) {
     this.serviceHttp.deletePhong(phongID).subscribe((data) => {
       if(data.message == 'success') {
-        this.open(modal,{textBtn: 'OKE', message: 'Bạn đã xóa thành công'},data.data);
-      } else {
-        this.open(modal,{textBtn: 'OKE', message: 'Bạn Đã xóa không thành Công'},data.data);
+        this.open(modal);
       }
     });
     this.serviceHttp.getAllPhong().subscribe((data) => {
       this.phong = data.data;
+      $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
     });
   }
@@ -58,13 +70,16 @@ export class PhongComponent implements OnInit {
     });
     return result;
   }
-  open(modal:any,content:any,data: any) {
-    this.textBtn = content.textBtn;
-    this.message = content.message + ' ' + data.TenPhong;
+  open(modal:any) {
     this.modalService.open(modal);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-
+  getListPhong() {
+    this.serviceHttp.getAllPhong().subscribe((data) => {
+      this.phong = data.data;
+      this.dtTrigger.next(this.dtOptions);
+    });
+  }
 }

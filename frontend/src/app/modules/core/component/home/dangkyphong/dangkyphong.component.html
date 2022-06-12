@@ -1,0 +1,35 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item">Đăng Tạm Trú</li>
+  </ol>
+</nav>
+<div class="blog-post">
+  <div class="blog-post-title" style="margin: 12px 0;text-align: center">
+    <h2 style="color: #ff6600; display: inline-block;">ĐĂNG KÝ TẠM TRÚ</h2>
+    <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;"> KÝ TÚC XÁ</h2>
+  </div>
+  <hr />
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tên phòng</th>
+      <th scope="col">Số lượng chứa</th>
+      <th scope="col">Sô lượng đang ở</th>
+      <th scope="col">Tình trạng</th>
+      <th scope="col">Hoạt động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let phong of phongTrong; index as i">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{phong.TenPhong}}</td>
+      <td>{{phong.SoLuongChua}}</td>
+      <td>{{phong.SoLuongDangO}}</td>
+      <td>{{phong.TinhTrang}}</td>
+      <td><button [routerLink]="[phong._id]" type="button" class="btn btn-primary btn-sm mr-2" tabindex="0"> Đăng ký phòng</button></td>
+    </tr>
+  </tbody>
+</table>

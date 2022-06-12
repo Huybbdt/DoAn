@@ -1,0 +1,376 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item active"><a [routerLink]="['/home/dangkyphong']">Đăng Tạm Trú</a></li>
+    <li class="breadcrumb-item ">Đăng Tạm Trú Form</li>
+  </ol>
+</nav>
+<div class="container-form" >
+  <div class="blog-post">
+    <div class="blog-post-title" style="margin: 12px 0;text-align: center">
+      <h2 style="color: #ff6600; display: inline-block;">ĐĂNG KÝ TẠM TRÚ FORM</h2>
+      <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;"> KÝ TÚC XÁ</h2>
+    </div>
+    <hr />
+  </div>
+  <form  *ngIf="sinhVienForm"  [formGroup]="sinhVienForm">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTen"  placeholder=" {{isDisabledEdit ? '': 'Nhập Họ và tên'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.HoTen"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('HoTen')?.hasError(validation.type) &&
+            (sinhVienForm.get('HoTen')?.dirty ||
+            sinhVienForm.get('HoTen')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Giới tính<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <select  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="GioiTinh">
+          <option [value]=true>Nam</option>
+          <option [value]=false>Nữ</option>
+        </select>
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.GioiTinh"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('GioiTinh')?.hasError(validation.type) &&
+            (sinhVienForm.get('GioiTinh')?.dirty ||
+            sinhVienForm.get('GioiTinh')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Ngày sinh<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+      <input type="date"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="NgaySinh" id="birthday" name="birthday">
+      <div
+      *ngFor="let validation of sinhvien_validation_messages.NgaySinh"
+    >
+      <span
+        class="col-auto invalid-feedback"
+        *ngIf="
+        sinhVienForm.get('NgaySinh')?.hasError(validation.type) &&
+          (sinhVienForm.get('NgaySinh')?.dirty ||
+          sinhVienForm.get('NgaySinh')?.touched ||
+            isSubmited)
+        "
+        >{{ validation.message }}</span
+      >
+    </div>
+    </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDT"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.SDT"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('SDT')?.hasError(validation.type) &&
+            (sinhVienForm.get('SDT')?.dirty ||
+            sinhVienForm.get('SDT')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">CMND<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="CMND"  placeholder="{{isDisabledEdit ? '': 'Nhập CMND'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.CMND"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('CMND')?.hasError(validation.type) &&
+            (sinhVienForm.get('CMND')?.dirty ||
+            sinhVienForm.get('CMND')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Nơi cấp<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="NoiCap"  placeholder="{{isDisabledEdit ? '': 'Nhập Nơi cấp'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.NoiCap"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('NoiCap')?.hasError(validation.type) &&
+            (sinhVienForm.get('NoiCap')?.dirty ||
+            sinhVienForm.get('NoiCap')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Dân tộc<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DanToc"  placeholder="{{isDisabledEdit ? '': 'Nhập Dân tộc'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.DanToc"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('DanToc')?.hasError(validation.type) &&
+            (sinhVienForm.get('DanToc')?.dirty ||
+            sinhVienForm.get('DanToc')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Tôn giáo<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="TonGiao"  placeholder="{{isDisabledEdit ? '': 'Nhập Tôn giáo'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.TonGiao"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('TonGiao')?.hasError(validation.type) &&
+            (sinhVienForm.get('TonGiao')?.dirty ||
+            sinhVienForm.get('TonGiao')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Mã sinh viên<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="MaSV"  placeholder="{{isDisabledEdit ? '': 'Nhập Mã sinh viên'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.MaSV"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('MaSV')?.hasError(validation.type) &&
+            (sinhVienForm.get('MaSV')?.dirty ||
+            sinhVienForm.get('MaSV')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Lớp<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Lop"  placeholder="{{isDisabledEdit ? '': 'Nhập Lớp'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.Lop"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('Lop')?.hasError(validation.type) &&
+            (sinhVienForm.get('Lop')?.dirty ||
+            sinhVienForm.get('Lop')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Khoa<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Khoa"  placeholder="{{isDisabledEdit ? '': 'Nhập Khoa'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.Khoa"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('Khoa')?.hasError(validation.type) &&
+            (sinhVienForm.get('Khoa')?.dirty ||
+            sinhVienForm.get('Khoa')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Trường<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Truong"  placeholder="{{isDisabledEdit ? '': 'Nhập Trường'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.Truong"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('Truong')?.hasError(validation.type) &&
+            (sinhVienForm.get('Truong')?.dirty ||
+            sinhVienForm.get('Truong')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DiaChi"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa chỉ'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.DiaChi"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('DiaChi')?.hasError(validation.type) &&
+            (sinhVienForm.get('DiaChi')?.dirty ||
+            sinhVienForm.get('DiaChi')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Họ và tên người thân<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTenNguoiThan"  placeholder="{{isDisabledEdit ? '': ' Nhập họ và tên người thân'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.HoTenNguoiThan"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('HoTenNguoiThan')?.hasError(validation.type) &&
+            (sinhVienForm.get('HoTenNguoiThan')?.dirty ||
+            sinhVienForm.get('HoTenNguoiThan')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">SĐT người thân<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDTNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập SĐT người thân'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.SDTNguoiThan"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('SDTNguoiThan')?.hasError(validation.type) &&
+            (sinhVienForm.get('SDTNguoiThan')?.dirty ||
+            sinhVienForm.get('SDTNguoiThan')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Địa chỉ người thân<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input  Class="form-control" formControlName="DiaChiNguoiThan"  placeholder="{{isDisabledEdit ? '': 'Nhập Địa Chỉ Người Thân'}}">
+        <div
+        *ngFor="let validation of sinhvien_validation_messages.DiaChiNguoiThan"
+      >
+        <span
+          class="col-auto invalid-feedback"
+          *ngIf="
+          sinhVienForm.get('DiaChiNguoiThan')?.hasError(validation.type) &&
+            (sinhVienForm.get('DiaChiNguoiThan')?.dirty ||
+            sinhVienForm.get('DiaChiNguoiThan')?.touched ||
+              isSubmited)
+          "
+          >{{ validation.message }}</span
+        >
+      </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Phòng<sup class="require-field">*</sup></label>
+      <div class="col-sm-10">
+        <input  Class="form-control" value="{{phongName}}" disabled placeholder="Nhập Địa Chỉ Người Thân">
+      </div>
+    </div>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/home/dangkyphong']" class="btn btn-secondary">Trở về</button>
+      <button type="submit"  (click)="oncheck(confirm)"  class="btn-wide btn btn-success">Đăng ký tạm trú</button>
+    </div>
+    <ng-template #confirm let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắn chắn muốn đăng ký tạm trú</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
+        <button type="button"  class="btn btn-warning" (click)="onSubmitForm(created)" (click)="c('Save click')">Đăng ký</button>
+        <ng-template #created let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
+          </div>
+          <div class="modal-body">
+            <p>Bạn đã Đăng ký tạm trú tại ký túc xá thành công</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </form>
+</div>
+

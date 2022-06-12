@@ -1,0 +1,49 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><a [routerLink]="['/home']">Trang Chủ</a></li>
+    <li class="breadcrumb-item ">Bảng Giá Điện Nước</li>
+  </ol>
+</nav>
+<div class="blog-post">
+  <div class="blog-post-title" style="margin: 12px 0;text-align: center">
+    <h2 style="color: #ff6600; display: inline-block;">BẢNG GIÁ ĐIỆN NƯỚC</h2>
+    <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;"> KÝ TÚC XÁ</h2>
+  </div>
+  <hr />
+</div>
+<p _ngcontent-qui-c109="" class="alert alert-danger"><strong _ngcontent-qui-c109="" style="color: red;">Thông báo</strong>: Mời đại diện của phòng đến văn phòng Ban Quản Lý Ký Túc Xá để nộp tiền. Thời hạn cuối đến hết ngày 10/07/2022. Quá thời hạn trên nếu không nộp tiền, Ban Quản Lý Ký Túc Xá sẽ tạm ngừng cung cấp điện, nước.</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tên phòng</th>
+      <th scope="col">Số điện đầu</th>
+      <th scope="col">Sô điện cuối</th>
+      <th scope="col">Giá điện</th>
+      <th scope="col">số nước đầu</th>
+      <th scope="col">Sô nước cuối</th>
+      <th scope="col">Giá nước</th>
+      <th scope="col">Tổng tiền</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of hoadon; index as i">
+      <th scope="row">{{i + 1}}</th>
+      <td >
+        <div *ngFor="let itemPhong of phong">
+          <div *ngIf="itemPhong._id == item.PhongID">
+            {{itemPhong.TenPhong}}
+          </div>
+       </div>
+      </td>
+      <td>{{item.ChiSoDienDauKy}}</td>
+      <td>{{item.ChiSoDienCuoiKy}}</td>
+      <td>{{item.DonGiaDien}}</td>
+      <td>{{item.ChiSoNuocDauKy}}</td>
+      <td>{{item.ChiSoNuocCuoiKy}}</td>
+      <td>{{item.DonGiaNuoc}}</td>
+      <td>{{item.TongTien}}</td>
+    </tr>
+  </tbody>
+</table>
+

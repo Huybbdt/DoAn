@@ -26,11 +26,24 @@ export class SinhvienComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       processing: true,
+      language : {
+        "zeroRecords": "Không tìm thấy kết quả",
+        "search":         "Tìm kiếm: ",
+        "emptyTable": "Không có dữ liệu",
+        "loadingRecords": "Đang tải...",
+        "info": "Hiển thị _START_ tới _END_ của _TOTAL_ dữ liệu",
+        "infoEmpty": "Hiển thị 0 tới 0 của 0 dữ liệu",
+        "lengthMenu": "Hiển thị _MENU_ dữ liệu",
+        "paginate": {
+          "first": "Đầu tiên",
+          "last": "Cuối cùng",
+          "next": "Sau",
+          "previous": "Trước"
+        },
+      }
     };
-    this.serviceHttp.getAllSinhVien().subscribe((data) => {
+    this.serviceHttp.getSinhVienDangO().subscribe((data) => {
       this.sinhvien = data.data;
-      console.log(this.sinhvien);
-
       this.dtTrigger.next(this.dtOptions);
     });
   }
@@ -38,46 +51,19 @@ export class SinhvienComponent implements OnInit {
     this.serviceHttp.deleteSinhVien(sinhvienID).subscribe((data) => {
       console.log(data.data);
       if (data.message == 'success') {
-        this.open(
-          modal,
-          { textBtn: 'OKE', message: 'Bạn đã xóa thành công' },
-          data.data
-        );
-        this.updatePhong(sinhvienID);
+        this.open(modal);
         this.serviceHttp.getAllSinhVien().subscribe((data) => {
           this.sinhvien = data.data;
-          console.log(this.sinhvien);
+          $('#datatables').DataTable().destroy();
           this.dtTrigger.next(this.dtOptions);
         });
-      } else {
-        this.open(
-          modal,
-          { textBtn: 'OKE', message: 'Bạn Đã xóa không thành Công' },
-          data.data
-        );
       }
     });
   }
-  open(modal: any, content: any, data: any) {
-    this.textBtn = content.textBtn;
-    this.message = content.message + ' ' + data.HoTen;
+  open(modal: any) {
     this.modalService.open(modal);
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
-  }
-
-  updatePhong(sinhvienID: any) {
-    this.sinhvien.forEach((item: any) => {
-      if (item._id == sinhvienID) {
-        this.serviceHttp.getPhong(item.PhongID).subscribe((data) => {
-          this.phong = data.data;
-          this.phong.SoLuongDangO = this.phong.SoLuongDangO - 1;
-          this.serviceHttp.updatePhong(this.phong,this.phong._id).subscribe((data) => {
-            console.log(data);
-          });
-        });
-      }
-    });
   }
 }

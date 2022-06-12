@@ -13,6 +13,19 @@ class NewController {
       res.json({ message: error });
     }
   }
+  async getHoaDonDienNuocChuaNop(req, res, next) {
+    try {
+      const data = await HoaDonDienNuoc.find();
+      const chuanop = data.filter((item)=> item.HoTenNguoiNop =! '');
+      res.status(201).json({
+        message: 'success',
+        data: chuanop,
+      });
+    } catch (error) {
+      res.json({ message: error });
+    }
+  }
+
   async getHoaDonDienNuoc(req, res, next) {
     try {
       const data = await HoaDonDienNuoc.findById({ _id: req.params.id});

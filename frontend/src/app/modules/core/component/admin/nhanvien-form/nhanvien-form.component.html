@@ -65,27 +65,30 @@
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="ChucVu"  placeholder=" {{isDisabledEdit ? '': 'Nhập Chức vụ'}}">
       </div>
     </div>
-    <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
-    <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">{{textSubmit}}</button>
+    <div style=" display: flex; justify-content: space-around;">
+      <button type="button" [routerLink]="['/admin/nhanvien']" class="btn btn-secondary">Trở về</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(content3)"  class="btn-wide btn btn-success">Tạo nhân viên</button>
+      <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(content)"  class="btn-wide btn btn-success">Cập nhật</button>
+    </div>
     <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>Bạn chắn chắn muốn cập nhật?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">Hủy</button>
-        <button type="button" class="btn btn-outline-dark" (click)="onSubmitForm(content2)" (click)="c('Save click')">{{textBtn}}</button>
+        <button type="button" class="btn btn-warning" (click)="onSubmitForm(content2)" (click)="c('Save click')">Cập nhật</button>
         <ng-template #content2 let-c="close" let-d="dismiss">
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
           </div>
           <div class="modal-body">
-            <p>{{message}}</p>
+            <p>Đã cập nhật thành công</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
           </div>
         </ng-template>
       </div>
@@ -95,10 +98,10 @@
         <h4 class="modal-title" id="modal-basic-title">Thông báo</h4>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>Tạo mới nhân viên thành công</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="d('Cross click')">{{textBtn}}</button>
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
       </div>
     </ng-template>
   </form>
