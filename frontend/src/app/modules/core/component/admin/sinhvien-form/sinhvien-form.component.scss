@@ -5,3 +5,11 @@
   text-align: center;
   background-color: #fff
 }
+.invalid-feedback {
+  display: block;
+  text-align: left;
+  font-size:14px;
+}
+.require-field {
+  color: red;
+}

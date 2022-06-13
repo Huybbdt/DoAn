@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
-
+import { nhanvien_validation } from './validate-nhanvien';
 @Component({
   selector: 'app-nhanvien-form',
   templateUrl: './nhanvien-form.component.html',
@@ -17,6 +17,8 @@ export class NhanvienFormComponent implements OnInit {
   message:any;
   isDisabledEdit: boolean = false;
   textSubmit : string;
+  isSubmited:any;
+  nhanvien_validation_messages = nhanvien_validation;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,private modalService: NgbModal,private router: Router) { }
 
@@ -64,12 +66,28 @@ export class NhanvienFormComponent implements OnInit {
       })
     }
     if(this.params['active'] === 'edit') {
+      this.modalService.open(content);
       this.serviceHttp.updateNhanVien(this.nhanVienForm.value,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
           this.modalService.open(content);
 
         }
       })
+    }
+  }
+
+  oncheck(modal:any) {
+    if(this.nhanVienForm.valid) {
+      if(this.params['active'] === 'create') {
+        this.onSubmitForm(modal);
+      }
+
+      if(this.params['active'] === 'edit') {
+        this.open(modal);
+      }
+
+    } else {
+      this.isSubmited = true;
     }
   }
 
