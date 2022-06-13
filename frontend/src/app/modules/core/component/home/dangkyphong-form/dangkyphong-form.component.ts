@@ -70,8 +70,6 @@ export class DangkyphongFormComponent implements OnInit {
   oncheck(modal:any) {
     if(this.sinhVienForm.valid) {
       this.open(modal);
-    }
-    if (this.sinhVienForm.valid) {
     } else {
       this.isSubmited = true;
     }

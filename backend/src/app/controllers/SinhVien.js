@@ -27,6 +27,12 @@ class NewController {
   }
 
   async createSinhVien(req, res, next) {
+    let phong =  await Phong.findById(req.body.PhongID);
+    if(phong.SoLuongDangO >= phong.SoLuongChua ){
+      return res.json({
+        message: 'faild',
+      });
+    }
     let data = await SinhVien.create(req.body);
     let dataPhong = await Phong.findByIdAndUpdate({_id: data.PhongID},{
       $inc: {SoLuongDangO:  1}

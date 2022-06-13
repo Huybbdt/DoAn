@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
-
+import { sinhvien_validation } from './validate-sinhvien';
 @Component({
   selector: 'app-sinhvien-form',
   templateUrl: './sinhvien-form.component.html',
@@ -16,6 +16,8 @@ export class SinhvienFormComponent implements OnInit {
   isDisabledEdit: boolean = false;
   public phongTrong: any = [];
   selectedPhong:any;
+  isSubmited:any;
+  sinhvien_validation_messages = sinhvien_validation;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,private modalService: NgbModal,private router: Router) { }
 
@@ -64,6 +66,19 @@ export class SinhvienFormComponent implements OnInit {
     });
   }
 
+  oncheck(modal:any) {
+    if(this.sinhVienForm.valid) {
+      if(this.params['active'] === 'create') {
+        this.onSubmitForm(modal);
+      }
+
+      if(this.params['active'] === 'edit') {
+        this.open(modal);
+      }
+    } else {
+      this.isSubmited = true;
+    }
+  }
   onSubmitForm(content?:any) {
     if(this.params['active'] === 'create') {
       this.serviceHttp.createSinhVien(this.sinhVienForm.value).subscribe((data) => {
