@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
       if(data.status === 200) {
         this.cookieService.set('token',data.token);
         localStorage.setItem('data',JSON.stringify(data));
-        this.router.navigate(['/admin'])
+        this.serviceHttp.reload = 0;
+        this.router.navigate(['/admin']);
       } else {
         this.message = data.message;
       }

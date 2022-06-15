@@ -29,6 +29,8 @@ import { DangkyphongFormComponent } from './modules/core/component/home/dangkyph
 import { DuyetsinhvienComponent } from './modules/core/component/admin/duyetsinhvien/duyetsinhvien.component';
 import { BanggiadiennuocComponent } from './modules/core/component/home/banggiadiennuoc/banggiadiennuoc.component';
 import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
+import { ProfileComponent } from './modules/core/component/admin/profile/profile.component';
+import { ChangePasswordComponent } from './modules/core/component/admin/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -124,6 +126,15 @@ const routes: Routes = [
         path: 'duyetsinhvien',
         component: DuyetsinhvienComponent,
       },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'changePassword',
+        component: ChangePasswordComponent,
+      },
+
     ],
   },
   {
