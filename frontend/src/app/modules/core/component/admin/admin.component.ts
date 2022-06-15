@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-  if(this.serviceHttp.reload== 0) {
+  if(this.serviceHttp.reload == 0) {
     this.serviceHttp.reload = 1;
     setTimeout(() => {
       window.location.reload();

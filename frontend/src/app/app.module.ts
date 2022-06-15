@@ -37,6 +37,8 @@ import { DangkyphongComponent } from './modules/core/component/home/dangkyphong/
 import { DangkyphongFormComponent } from './modules/core/component/home/dangkyphong-form/dangkyphong-form.component';
 import { BanggiadiennuocComponent } from './modules/core/component/home/banggiadiennuoc/banggiadiennuoc.component';
 import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
+import { ProfileComponent } from './modules/core/component/admin/profile/profile.component';
+import { ChangePasswordComponent } from './modules/core/component/admin/change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,8 @@ import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.com
     DangkyphongFormComponent,
     BanggiadiennuocComponent,
     NoiquyComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
