@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
@@ -17,7 +18,7 @@ export class DuyetsinhvienComponent implements OnInit {
   phong: any;
   constructor(
     private serviceHttp: ServiceHttpService,
-    private modalService: NgbModal
+    private modalService: NgbModal,private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,8 +70,7 @@ export class DuyetsinhvienComponent implements OnInit {
           this.open(modal);
           this.serviceHttp.getSinhVienChoDuyet().subscribe((data) => {
             this.sinhvien = data.data;
-            $('#datatables').DataTable().destroy();
-            this.dtTrigger.next(this.dtOptions);
+            this.router.navigate(['/admin/thongbao']);
           });
         }
       })

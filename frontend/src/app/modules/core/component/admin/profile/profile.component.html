@@ -188,7 +188,7 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Chức vụ</label>
       <div class="col-sm-10">
-        <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="ChucVu"  placeholder=" {{isDisabledEdit ? '': 'Nhập Chức vụ'}}">
+        <input type="text"  [attr.disabled]="true ? '': null"  Class="form-control" formControlName="ChucVu"  placeholder=" {{isDisabledEdit ? '': 'Nhập Chức vụ'}}">
         <div
         *ngFor="let validation of nhanvien_validation_messages.ChucVu"
       >
@@ -227,7 +227,7 @@
             <p>Đã cập nhật thành công</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
           </div>
         </ng-template>
       </div>
@@ -240,7 +240,7 @@
         <p>Tạo mới nhân viên thành công</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
       </div>
     </ng-template>
   </form>

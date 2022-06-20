@@ -1,5 +1,5 @@
 <div class="container-form">
-  <button class="btn btn-lg btn-outline-primary" [routerLink]="['create', 1]">
+  <button class="btn btn-lg btn-outline-primary btn-left" [routerLink]="['create', 1]">
     Thêm sinh viên
   </button>
   <table
@@ -34,13 +34,13 @@
             class="btn btn-primary btn-sm mr-2"
             [routerLink]="['details', person._id]"
           >
-            Details
+            Chi tiết
           </button>
           <button
             class="btn-wide btn btn-sm btn-success mr-2"
             [routerLink]="['edit', person._id]"
           >
-            Edit
+            Chỉnh sửa
           </button>
           <button (click)="open(comfirm)"  class="btn-icon btn-sm btn-icon-only  btn-sm btn btn-outline-danger">
             <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
@@ -64,7 +64,7 @@
                   <p>Bạn đã <strong> {{person.HoTen}}</strong> xóa thành công</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
                 </div>
               </ng-template>
             </div>

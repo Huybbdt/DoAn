@@ -39,6 +39,9 @@ import { BanggiadiennuocComponent } from './modules/core/component/home/banggiad
 import { NoiquyComponent } from './modules/core/component/home/noiquy/noiquy.component';
 import { ProfileComponent } from './modules/core/component/admin/profile/profile.component';
 import { ChangePasswordComponent } from './modules/core/component/admin/change-password/change-password.component';
+import { NgChartsModule } from 'ng2-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +79,7 @@ import { ChangePasswordComponent } from './modules/core/component/admin/change-p
     BrowserModule,
     NgbModule,
     FormsModule,
+    NgChartsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

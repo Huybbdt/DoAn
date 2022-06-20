@@ -1,4 +1,5 @@
 const ThongBao = require('../models/ThongBao');
+const cloudinary = require('../../utils/cloudinary');
 
 require('dotenv').config();
 class NewController {
@@ -15,7 +16,7 @@ class NewController {
   }
   async getThongBao(req, res, next) {
     try {
-      const data = await ThongBao.findById({ _id: req.params.id});
+      const data = await ThongBao.findById({ _id: req.params.id });
       res.status(201).json({
         message: 'success',
         data: data,
@@ -26,7 +27,18 @@ class NewController {
   }
 
   async createThongBao(req, res, next) {
-    let data = await ThongBao.create(req.body);
+    const path = req.file;
+    let result;
+    if (!path) {
+      return res.json({ message: 'chua cos anh' });
+    }
+    result = await cloudinary.uploader.upload(path?.path);
+
+    let data = await ThongBao.create({
+      Anh: result?.secure_url,
+      cloudinary_id: result.public_id,
+      ...req.body,
+    });
     res.json({
       message: 'success',
       data: data,
@@ -35,9 +47,21 @@ class NewController {
 
   async editThongBao(req, res) {
     try {
-      let data = await ThongBao.findByIdAndUpdate(req.params.id).exec();
-      data.set(req.body);
-      let result = await data.save();
+      const path = req.file;
+      const _id = req.params.id;
+      let user_cloud = await ThongBao.findById(req.params.id);
+      if (user_cloud?.public_id) {
+        await cloudinary.uploader.destroy(user_cloud?.cloudinary_id);
+      }
+      let avatar;
+      if (path) {
+        avatar = await cloudinary.uploader.upload(path.path);
+      }
+      let result = await ThongBao.findByIdAndUpdate(_id, {
+        Anh: avatar.secure_url || user_cloud?.cloudinary_id,
+        cloudinary_id: avatar.public_id || user_cloud?.cloudinary_id,
+        ...req.body,
+      });
       res.json({
         message: 'success',
         data: result,

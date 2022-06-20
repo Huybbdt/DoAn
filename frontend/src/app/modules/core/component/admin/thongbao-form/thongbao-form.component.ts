@@ -19,6 +19,9 @@ export class ThongbaoFormComponent implements OnInit {
   nhanvien:any;
   isDisabledEdit: boolean = false;
   textSubmit : string;
+  selectedFiles:any;
+  submited: boolean = false;
+  url: any;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,  private modalService: NgbModal,private router: Router) { }
   createThongBaoForm(data?: any):void {
@@ -48,17 +51,25 @@ export class ThongbaoFormComponent implements OnInit {
   }
 
   onSubmitForm(content?:any) {
-
+    if(this.submited) {
+      return;
+    }
+    this.submited = true;
+    const formData = new FormData();
     if(this.params['active'] === 'create') {
       this.nhanvien = localStorage.getItem('nhanvien');
       this.nhanvien =  JSON.parse(this.nhanvien);
       this.thongbaoForm.patchValue({
         NhanVienID: this.nhanvien.data._id,
         NgayLap: new Date()
-      })
-      console.log(this.thongbaoForm.value);
-
-      this.serviceHttp.createThongBao(this.thongbaoForm.value).subscribe((data:any) => {
+      });
+      console.log( this.thongbaoForm.value['Anh']);
+      formData.append('NhanVienID', this.thongbaoForm.value['NhanVienID']);
+      formData.append('TieuDe', this.thongbaoForm.value['TieuDe']);
+      formData.append('NoiDung', this.thongbaoForm.value['NoiDung']);
+      formData.append('Anh', this.thongbaoForm.value['Anh']);
+      formData.append('NgayLap', this.thongbaoForm.value['NgayLap']);
+      this.serviceHttp.createThongBao(formData).subscribe((data:any) => {
         if(data.message == 'success') {
           this.open(content);
           this.router.navigate(['/admin/thongbao']);
@@ -66,7 +77,13 @@ export class ThongbaoFormComponent implements OnInit {
       });
     }
     if(this.params['active'] === 'edit') {
-      this.serviceHttp.updateThongBao(this.thongbaoForm.value,this.params['id']).subscribe((data) => {
+      console.log( this.thongbaoForm.value['Anh']);
+      formData.append('NhanVienID', this.thongbaoForm.value['NhanVienID']);
+      formData.append('TieuDe', this.thongbaoForm.value['TieuDe']);
+      formData.append('NoiDung', this.thongbaoForm.value['NoiDung']);
+      formData.append('Anh', this.thongbaoForm.value['Anh']);
+      formData.append('NgayLap', this.thongbaoForm.value['NgayLap']);
+      this.serviceHttp.updateThongBao(formData,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
           this.modalService.open(content);
           this.router.navigate(['/admin/thongbao']);
@@ -74,6 +91,19 @@ export class ThongbaoFormComponent implements OnInit {
       })
     }
   }
+  fileChangeEvent(event: any) {
+    const file = event.target.files[0];
+    this.thongbaoForm.patchValue({
+      Anh: file,
+    });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event:any) => {
+      this.url = event.target.result;
+    }
+    this.thongbaoForm.value['Anh']?.updateValueAndValidity();
+  }
+
 
   open(modal:any) {
     this.modalService.open(modal);
