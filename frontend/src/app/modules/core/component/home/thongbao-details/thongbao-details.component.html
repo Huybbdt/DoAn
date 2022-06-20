@@ -6,8 +6,8 @@
   </ol>
 </nav>
 <div class="row">
-  <div class="blog-post">
-    <div class="blog-post-title" style="margin: 12px 0;text-align: center">
+  <div class="blog-post" style="width: 100%;">
+    <div class="blog-post-title" style="margin: 12px 0;text-align: center;">
       <h2 style="color: #ff6600; display: inline-block;">CHI TIẾT THÔNG BÁO</h2>
       <h2 style="color: #fff; background-color: #3366ff; display: inline-block;margin-left: 10px;padding: 4px;"> KÝ TÚC XÁ</h2>
     </div>
@@ -15,8 +15,8 @@
   </div>
   <div class="col">
     <div class="card mb-3">
-      <img *ngIf="thongbao.Anh"src="{{thongbao.Anh}}" class="card-img-top thongbao-anh" alt="ảnh">
-      <img *ngIf="!thongbao.Anh"src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=" class="card-img-top thongbao-anh" alt="ảnh">
+      <img *ngIf="thongbao.Anh"src="{{thongbao.Anh}}" class="card-img-top thongbao-anh" alt="ảnh" style="object-fit: contain;">
+      <img *ngIf="!thongbao.Anh" style="object-fit: contain;" src="https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=20&m=922962354&s=612x612&w=0&h=f-9tPXlFXtz9vg_-WonCXKCdBuPUevOBkp3DQ-i0xqo=" class="card-img-top thongbao-anh" alt="ảnh">
 
       <div class="card-body">
         <h5 class="card-title">{{thongbao.TieuDe}}</h5>

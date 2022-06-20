@@ -1,6 +1,6 @@
 <div class="container-form">
-  <button class="btn btn-lg btn-outline-primary" [routerLink]="['create', 1]">
-    Thêm Thông Báo
+  <button class="btn btn-lg btn-outline-primary btn-left" [routerLink]="['create', 1]">
+    Thêm Hóa Đơn
   </button>
   <table
     datatable
@@ -46,13 +46,13 @@
             class="btn btn-primary btn-sm mr-2 "
             [routerLink]="['details', item._id]"
           >
-            Details
+            Chi tiết
           </button>
           <button
             class="btn-wide btn btn-success btn-sm  mr-2 "
             [routerLink]="['edit', item._id]"
           >
-            Edit
+            Chỉnh sửa
           </button>
           <button (click)="open(confirm)"  class="btn-icon btn-icon-only btn-sm btn btn-outline-danger">
             <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
@@ -76,7 +76,7 @@
                   <p>Bạn đã xóa thành công thông báo</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+                  <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
                 </div>
               </ng-template>
             </div>

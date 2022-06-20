@@ -17,7 +17,9 @@ export class ServiceHttpService {
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
       'Authorization': 'Bearer szdp79a2kz4wh4frjzuqu4sz6qeth8m3',
     }),
+
   };
+
 
   public postLogin(data: any): Observable<any> {
     return this.httpClient.post<any>(`${this.url}login`,data);
@@ -112,7 +114,7 @@ export class ServiceHttpService {
     return this.httpClient.get<any>(`${this.url}thongbao`, this.httOptions);
   }
   public createThongBao(thongbao: any): Observable<any> {
-    return this.httpClient.post<any>(`${this.url}thongbao/create`,thongbao, this.httOptions);
+    return this.httpClient.post<any>(`${this.url}thongbao/create`,thongbao);
   }
 
   public getThongBao(id: number): Observable<any> {

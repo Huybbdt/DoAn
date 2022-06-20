@@ -15,9 +15,9 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Ảnh: </label>
       <div class="col-sm-10">
-        <input *ngIf="!isDisabledEdit" type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="Anh"  placeholder=" {{isDisabledEdit ? '': 'Nhập link ảnh'}}">
-        <img  width="100px" class="rounded float-left mt-4"  *ngIf="thongbaoForm.value.Anh" src="{{thongbaoForm.value.Anh}}" alt="Ảnh">
-        <img  width="100px" class="rounded float-left"  *ngIf="isDisabledEdit" src="{{thongbaoForm.value.Anh}}" alt="Ảnh">
+        <input *ngIf="!isDisabledEdit" type="file" (change)="fileChangeEvent($event)"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   placeholder=" {{isDisabledEdit ? '': 'Nhập link ảnh'}}">
+        <img  id="mage_preview" width="100px" class="rounded float-left mt-4"  *ngIf="url" src="{{url}}" alt="Ảnh">
+        <img  id="mage_preview" width="100px" class="rounded float-left"  *ngIf="isDisabledEdit" src="{{url}}" alt="Ảnh">
 
       </div>
     </div>
@@ -29,8 +29,8 @@
     </div>
     <div style=" display: flex; justify-content: space-around;">
       <button type="button" [routerLink]="['/admin/thongbao']" class="btn btn-secondary">Trở về</button>
-      <button *ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(created)"  class="btn-wide btn btn-success">Tạo thông báo</button>
-      <button *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(confirm)"  class="btn-wide btn btn-success">Cập nhật thông báo</button>
+      <button  [attr.disabled]="submited ? '': null"*ngIf="!isDisabledEdit && params['active'] == 'create'" type="submit" (click)="onSubmitForm(created)"  class="btn-wide btn btn-success">Tạo thông báo</button>
+      <button [attr.disabled]="submited ? '': null" *ngIf="!isDisabledEdit && params['active'] == 'edit'" type="submit" (click)="open(confirm)"  class="btn-wide btn btn-success">Cập nhật thông báo</button>
     </div>
     <ng-template #confirm let-c="close" let-d="dismiss">
       <div class="modal-header">
@@ -50,7 +50,7 @@
             <p>Bạn đã cập nhật thông báo thành công</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+            <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
           </div>
         </ng-template>
       </div>
@@ -63,7 +63,7 @@
         <p>Bạn đã tạo mới thông báo thành công</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">OKE</button>
+        <button type="button" class="btn btn-success" aria-label="Close" (click)="d('Cross click')">Đồng ý</button>
       </div>
     </ng-template>
   </form>

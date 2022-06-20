@@ -196,7 +196,7 @@
                   </a>
                 </li>
                 <li class="app-sidebar__heading">Quản lý sinh viên</li>
-                <li>
+                <li class="icon icon--bubble" [attr.data-bubble]="sinhvien?.length? sinhvien?.length : 0">
                   <a [routerLink]="['/admin/duyetsinhvien']" [routerLinkActive]="['mm-active']" [routerLinkActiveOptions]="{exact: true}">
                     <i class="metismenu-icon pe-7s-mouse"> </i>Duyệt sinh viên
                   </a>

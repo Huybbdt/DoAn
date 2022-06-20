@@ -1,1 +1,17 @@
+.icon--bubble {
+  position:relative;
+}
 
+.icon--bubble:after {
+  content: attr(data-bubble);
+  position:absolute;
+  background:#f00;
+  border:solid 3px #fff;
+  right:0;
+  bottom:20px;
+  color:#fff;
+  border-radius:50%;
+  min-width:25px;
+  text-align:center;
+  box-shadow:1px 1px 3px #000;
+}
