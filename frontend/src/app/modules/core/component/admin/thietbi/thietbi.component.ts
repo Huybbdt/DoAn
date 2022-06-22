@@ -55,9 +55,9 @@ export class ThietbiComponent implements OnInit {
         this.open(modal);
       }
     });
+    $('#datatables').DataTable().destroy();
     this.serviceHttp.getAllThietBi().subscribe((data) => {
       this.thietbi = data.data;
-      $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
     });
 

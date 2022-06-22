@@ -23,7 +23,7 @@ export class TaikhoanFormComponent implements OnInit {
 
     createNhanVienForm(data?: any):void {
       this.taiKhoanForm = this.formBuilder.group({
-        NhanVienID:[ data? data.MatKhau : this.params, [Validators.required]],
+        NhanVienID:[ data? data.NhanVienID : this.params, [Validators.required]],
         Email:[ data? data.Email : '', [Validators.required]],
         MatKhau:[ data? data.MatKhau : '', [Validators.required]],
       });
@@ -41,12 +41,11 @@ export class TaikhoanFormComponent implements OnInit {
             this.isUpdate = true;
           }
         });
-        if(!this.isUpdate) {
-          this.createNhanVienForm();
-          this.isSave = true;
-        }
       });
-
+      if(!this.isUpdate) {
+        this.isSave = true;
+        this.createNhanVienForm();
+      }
     }
     isPassword() {
       this.isHien = !this.isHien;

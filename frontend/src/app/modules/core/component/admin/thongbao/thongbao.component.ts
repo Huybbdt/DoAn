@@ -54,6 +54,7 @@ export class ThongbaoComponent implements OnInit {
       this.thongbao = data.data;
       $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
+      this.dtTrigger.next(this.dtOptions);
     });
   }
 

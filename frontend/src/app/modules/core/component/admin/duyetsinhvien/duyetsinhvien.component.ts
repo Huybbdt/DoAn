@@ -58,6 +58,7 @@ export class DuyetsinhvienComponent implements OnInit {
           this.sinhvien = data.data;
           $('#datatables').DataTable().destroy();
           this.dtTrigger.next(this.dtOptions);
+          this.dtTrigger.next(this.dtOptions);
         });
       }
     });

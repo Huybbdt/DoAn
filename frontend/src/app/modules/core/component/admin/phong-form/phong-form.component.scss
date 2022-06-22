@@ -9,3 +9,11 @@
 .table-title {
   text-align: center;
 }
+.invalid-feedback {
+  display: block;
+  text-align: left;
+  font-size:14px;
+}
+.require-field {
+  color: red;
+}

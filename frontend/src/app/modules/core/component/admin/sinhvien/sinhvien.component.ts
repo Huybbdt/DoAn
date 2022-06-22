@@ -49,12 +49,11 @@ export class SinhvienComponent implements OnInit {
   }
   deleteSinhVien(sinhvienID: any, modal: any) {
     this.serviceHttp.deleteSinhVien(sinhvienID).subscribe((data) => {
-      console.log(data.data);
       if (data.message == 'success') {
         this.open(modal);
+        $('#datatables').DataTable().destroy();
         this.serviceHttp.getAllSinhVien().subscribe((data) => {
           this.sinhvien = data.data;
-          $('#datatables').DataTable().destroy();
           this.dtTrigger.next(this.dtOptions);
         });
       }

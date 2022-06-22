@@ -61,6 +61,7 @@ export class BienlaithutienComponent implements OnInit {
       this.bienlaithutien = data.data;
       $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
+      this.dtTrigger.next(this.dtOptions);
     });
   }
 

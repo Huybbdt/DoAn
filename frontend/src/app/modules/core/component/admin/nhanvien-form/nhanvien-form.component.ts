@@ -66,11 +66,10 @@ export class NhanvienFormComponent implements OnInit {
       })
     }
     if(this.params['active'] === 'edit') {
-      this.modalService.open(content);
       this.serviceHttp.updateNhanVien(this.nhanVienForm.value,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
           this.modalService.open(content);
-
+          this.router.navigate(['/admin/nhanvien']);
         }
       })
     }

@@ -33,6 +33,13 @@
           >
             Duyệt
           </button>
+          <button
+          [routerLink]="['/admin/sinhvien/details', person._id]"
+            type="button"
+            class="btn btn-success btn-sm mr-2"
+          >
+            Chi tiết
+          </button>
           <button (click)="open(comfirm,'delete')"  class="btn-icon btn-sm btn-icon-only  btn-sm btn btn-outline-danger">
             <i class="pe-7s-trash btn-icon-wrapper"> xóa</i>
           </button>

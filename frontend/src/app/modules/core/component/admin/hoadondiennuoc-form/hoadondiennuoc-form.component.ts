@@ -29,10 +29,10 @@ export class HoadondiennuocFormComponent implements OnInit {
       HoTenNguoiNop:[ data? data.HoTenNguoiNop : ''],
       ChiSoDienDauKy:[ data? data.ChiSoDienDauKy : '', [Validators.required]],
       ChiSoDienCuoiKy:[ data? data.ChiSoDienCuoiKy : '', [Validators.required]],
-      DonGiaDien:[ data? data.DonGiaDien : '', [Validators.required]],
+      DonGiaDien:[ data? data.DonGiaDien : 3500, [Validators.required]],
       ChiSoNuocDauKy:[ data? data.ChiSoNuocDauKy : '', [Validators.required]],
       ChiSoNuocCuoiKy:[ data? data.ChiSoNuocCuoiKy : '', [Validators.required]],
-      DonGiaNuoc:[ data? data.DonGiaNuoc : '', [Validators.required]],
+      DonGiaNuoc:[ data? data.DonGiaNuoc : 7000, [Validators.required]],
       TongTien: [data? data.TongTien : '', [Validators.required]],
       NgayLap:[data? data.NgayLap : ''],
     });

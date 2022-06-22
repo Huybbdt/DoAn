@@ -1,7 +1,7 @@
 <div class="container-form" >
   <form  *ngIf="nhanVienForm"  [formGroup]="nhanVienForm">
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Họ và tên: </label>
+      <label class="col-sm-2 col-form-label">Họ và tên<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text" [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="HoTen"  placeholder=" {{isDisabledEdit ? '': 'Nhập Họ và tên'}}">
         <div
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Giới tính: </label>
+      <label class="col-sm-2 col-form-label">Giới tính<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
 
         <select  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="GioiTinh">
@@ -46,7 +46,7 @@
 
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Ngày sinh: </label>
+      <label class="col-sm-2 col-form-label">Ngày sinh<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="date"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control"   formControlName="NgaySinh" id="birthday" name="birthday">
         <div
@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">SĐT: </label>
+      <label class="col-sm-2 col-form-label">SĐT<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="SDT"  placeholder=" {{isDisabledEdit ? '': 'Nhập SĐT'}}">
         <div
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">CMND: </label>
+      <label class="col-sm-2 col-form-label">CMND<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="CMND"  placeholder=" {{isDisabledEdit ? '': 'Nhập CMND'}}">
         <div
@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Nơi cấp: </label>
+      <label class="col-sm-2 col-form-label">Nơi cấp<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="NoiCap"  placeholder=" {{isDisabledEdit ? '': 'Nhập Nơi cấp'}}">
         <div
@@ -126,7 +126,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Dân tộc: </label>
+      <label class="col-sm-2 col-form-label">Dân tộc<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DanToc"  placeholder=" {{isDisabledEdit ? '': 'Nhập Dân tộc'}}">
         <div
@@ -146,7 +146,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Tôn giáo: </label>
+      <label class="col-sm-2 col-form-label">Tôn giáo<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="TonGiao"  placeholder=" {{isDisabledEdit ? '': 'Nhập Tôn giáo'}}">
         <div
@@ -166,7 +166,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Địa chỉ: </label>
+      <label class="col-sm-2 col-form-label">Địa chỉ<sup class="require-field">*</sup> </label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="DiaChi"  placeholder=" {{isDisabledEdit ? '': 'Nhập Địa chỉ'}}">
         <div
@@ -186,7 +186,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Chức vụ</label>
+      <label class="col-sm-2 col-form-label">Chức vụ<sup class="require-field">*</sup></label>
       <div class="col-sm-10">
         <input type="text"  [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="ChucVu"  placeholder=" {{isDisabledEdit ? '': 'Nhập Chức vụ'}}">
         <div

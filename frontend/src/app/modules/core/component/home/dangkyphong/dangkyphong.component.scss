@@ -40,4 +40,11 @@ table {
   }
 }
 
+.nav-tabs {
+  margin-bottom: 6px;
+  .nav-link.active {
+    color: #ff6600;
+
+  }
+}
 

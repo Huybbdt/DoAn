@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceHttpService } from 'src/app/modules/share/service-http.service';
+import { thietbi_validation } from './validate-thietbi';
 
 @Component({
   selector: 'app-thietbi-form',
@@ -20,6 +21,9 @@ export class ThietbiFormComponent implements OnInit {
   selectedPhong:any;
   isDisabledEdit: boolean = false;
   textSubmit : string;
+  isSubmited:any;
+  thietbi_validation_messages = thietbi_validation;
+
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,  private modalService: NgbModal,private router: Router) { }
     createThietBiForm(data?: any):void {
@@ -43,7 +47,6 @@ export class ThietbiFormComponent implements OnInit {
     }else {
       this.serviceHttp.getThietBi(this.params['id']).subscribe((data) => {
         console.log(data);
-
         if(this.params['active'] === 'details') {
           this.listPhong.forEach((item:any) => {
              if(data.data.PhongID == item._id) {
@@ -87,7 +90,20 @@ export class ThietbiFormComponent implements OnInit {
       })
     }
   }
+  oncheck(modal:any) {
+    console.log(this.thietbiForm.value);
 
+    if(this.thietbiForm.valid) {
+      if(this.params['active'] === 'create') {
+        this.onSubmitForm(modal);
+      }
+      if(this.params['active'] === 'edit') {
+        this.open(modal);
+      }
+    } else {
+      this.isSubmited = true;
+    }
+  }
   open(modal:any) {
     this.modalService.open(modal);
   }

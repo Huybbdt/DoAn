@@ -71,7 +71,6 @@ export class SinhvienFormComponent implements OnInit {
       if(this.params['active'] === 'create') {
         this.onSubmitForm(modal);
       }
-
       if(this.params['active'] === 'edit') {
         this.open(modal);
       }
@@ -91,7 +90,7 @@ export class SinhvienFormComponent implements OnInit {
     if(this.params['active'] === 'edit') {
       this.serviceHttp.updateSinhVien(this.sinhVienForm.value,this.params['id']).subscribe((data) => {
         if(data.message == 'success') {
-          this.modalService.open(content);
+          this.open(content);
           this.router.navigate(['/admin/sinhvien']);
         }
       })

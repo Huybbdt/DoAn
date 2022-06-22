@@ -60,6 +60,8 @@ export class HoadondiennuocComponent implements OnInit {
       this.hoadondiennuoc = data.data;
       $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
+      this.dtTrigger.next(this.dtOptions);
+
     });
   }
 
@@ -72,7 +74,10 @@ export class HoadondiennuocComponent implements OnInit {
   getListHoaDonDienNuoc() {
     this.serviceHttp.getAllHoaDonDienNuoc().subscribe((data) => {
       this.hoadondiennuoc = data.data;
+      $('#datatables').DataTable().destroy();
       this.dtTrigger.next(this.dtOptions);
+      this.dtTrigger.next(this.dtOptions);
+
     });
   }
 
