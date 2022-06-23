@@ -70,9 +70,7 @@ export class ThietbiFormComponent implements OnInit {
   onSubmitForm(content?:any) {
     this.nhanvien = localStorage.getItem('nhanvien');
     this.nhanvien =  JSON.parse(this.nhanvien);
-    this.thietbiForm.patchValue({
-      PhongID: this.selectedPhong
-    })
+
     if(this.params['active'] === 'create') {
       this.serviceHttp.createThietBi(this.thietbiForm.value).subscribe((data:any) => {
         if(data.message == 'success') {
@@ -91,6 +89,9 @@ export class ThietbiFormComponent implements OnInit {
     }
   }
   oncheck(modal:any) {
+    this.thietbiForm.patchValue({
+      PhongID: this.selectedPhong
+    })
     console.log(this.thietbiForm.value);
 
     if(this.thietbiForm.valid) {

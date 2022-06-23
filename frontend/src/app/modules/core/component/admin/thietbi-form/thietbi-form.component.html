@@ -10,20 +10,6 @@
         [(ngModel)]="selectedPhong" [ngModelOptions]="{standalone: true}">
         </ng-select>
         <input type="text" *ngIf="isDisabledEdit"   [attr.disabled]="isDisabledEdit ? '': null"  Class="form-control" formControlName="PhongID">
-        <div
-        *ngFor="let validation of thietbi_validation_messages.PhongID"
-      >
-        <span
-          class="col-auto invalid-feedback"
-          *ngIf="
-          thietbiForm.get('PhongID')?.hasError(validation.type) &&
-            (thietbiForm.get('PhongID')?.dirty ||
-            thietbiForm.get('PhongID')?.touched ||
-              isSubmited)
-          "
-          >{{ validation.message }}</span
-        >
-      </div>
       </div>
     </div>
     <div class="form-group row">

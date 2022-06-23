@@ -55,8 +55,8 @@ export class ThongbaoFormComponent implements OnInit {
       return;
     }
     this.submited = true;
-    const formData = new FormData();
     if(this.params['active'] === 'create') {
+      const formData = new FormData();
       this.nhanvien = localStorage.getItem('nhanvien');
       this.nhanvien =  JSON.parse(this.nhanvien);
       this.thongbaoForm.patchValue({
@@ -77,6 +77,7 @@ export class ThongbaoFormComponent implements OnInit {
       });
     }
     if(this.params['active'] === 'edit') {
+      const formData = new FormData();
       console.log( this.thongbaoForm.value['Anh']);
       formData.append('NhanVienID', this.thongbaoForm.value['NhanVienID']);
       formData.append('TieuDe', this.thongbaoForm.value['TieuDe']);
@@ -101,7 +102,6 @@ export class ThongbaoFormComponent implements OnInit {
     reader.onload = (event:any) => {
       this.url = event.target.result;
     }
-    this.thongbaoForm.value['Anh']?.updateValueAndValidity();
   }
 
 

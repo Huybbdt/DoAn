@@ -17,6 +17,7 @@ export class SinhvienFormComponent implements OnInit {
   public phongTrong: any = [];
   selectedPhong:any;
   isSubmited:any;
+  allPhong:any;
   sinhvien_validation_messages = sinhvien_validation;
   constructor( private formBuilder: FormBuilder,  private serviceHttp: ServiceHttpService,
     private activatedRoute: ActivatedRoute,private modalService: NgbModal,private router: Router) { }
@@ -26,6 +27,9 @@ export class SinhvienFormComponent implements OnInit {
       this.phongTrong = data.data;
       this.sinhVienForm.patchValue({ PhongID :  this.phongTrong[0]._id});
     });
+    this.serviceHttp.getAllPhong().subscribe((data) => {
+        this.allPhong = data.data;
+    })
     this.activatedRoute.params.subscribe((params) => {
       this.params = params;
     });

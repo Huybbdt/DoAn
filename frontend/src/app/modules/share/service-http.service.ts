@@ -122,7 +122,7 @@ export class ServiceHttpService {
   }
 
   public updateThongBao(data:any,id: number): Observable<any> {
-    return this.httpClient.put<any>(`${this.url}thongbao/edit/${id}`,data, this.httOptions);
+    return this.httpClient.put<any>(`${this.url}thongbao/edit/${id}`,data);
   }
   public deleteThongBao(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.url}thongbao/delete/${id}`, this.httOptions);
